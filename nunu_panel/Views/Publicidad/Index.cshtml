@@ -1,0 +1,162 @@
+@{
+    ViewData["Title"] = "Publicidad";
+    Layout = "~/Views/Shared/_Layout.cshtml";
+}
+
+<div class="container">
+<div class="row mb-3">
+    <div class="col">
+        <form asp-controller="Publicidad" asp-action="Index">
+            <div class="groupSearch">
+                <svg class="iconSearch" aria-hidden="true" viewBox="0 0 24 24"><g><path d="M21.53 20.47l-3.66-3.66C19.195 15.24 20 13.214 20 11c0-4.97-4.03-9-9-9s-9 4.03-9 9 4.03 9 9 9c2.215 0 4.24-.804 5.808-2.13l3.66 3.66c.147.146.34.22.53.22s.385-.073.53-.22c.295-.293.295-.767.002-1.06zM3.5 11c0-4.135 3.365-7.5 7.5-7.5s7.5 3.365 7.5 7.5-3.365 7.5-7.5 7.5-7.5-3.365-7.5-7.5z"></path></g></svg>
+                <input value="" name="searchTerm" placeholder="Busca por proveedor/ID" type="search" class="inputSearch">
+            </div>
+        </form>
+    </div>
+</div>
+<div class="row">
+    <div class="d-flex justify-content-between align-items-center">
+        <h4 class="title-form">Publicidad</h4>
+        <div>
+        <a class="btn btn-primary" asp-controller="Publicidad" asp-action="PublicidadDetalle">Subir anuncio</a>
+<button type="button" class="btn btn-filter" data-bs-toggle="modal" data-bs-target="#filterModal">
+            <i class="fas fa-filter"></i> <!-- Icono de filtro -->
+        </button>
+        </div>
+        
+    </div>
+</div>
+
+<div class="row">
+    <div class="breadcrumb">
+        <a href="/Publicidad" class="breadcrumb-item active">Publicidad</a> >
+    </div>
+    Mostrando 7 de 100 resultados
+</div>
+
+<div class="col-md-12 mt-3">
+        <table class="table">
+            <thead>
+                <tr>
+                    <th scope="col" class="">Servicio</th>
+                    <th scope="col" class="">Proveedor</th>
+                    <th scope="col" class="">Pago</th>
+                    <th scope="col" class="">Banner publicitario</th>
+                    <th scope="col" class="">Estatus</th>
+                    <th scope="col" class="">Fecha Inicio</th>
+                    <th scope="col" class="">Fecha Fin</th>
+                    <th scope="col" class=""></th>
+                </tr>
+            </thead>
+            <tbody> 
+                <tr>                 
+                    <td class="td-first">
+                        Carpintería
+                    </td>
+                    <td class="td-middle">Plomería del golfo</td>
+                    <td class="td-middle">$55,555</td>
+                    <td class="td-middle"><a asp-controller="Publicidad" asp-action="PublicidadDetalle">Ver preview</a></td>
+                    <td class="td-middle"><span class="badge-custom aprobado" data-bs-toggle="modal" data-bs-target="#leftModal" style="cursor:pointer;">Publicitario</span></td>                    
+                    <td class="td-middle">00/00/00</td>
+                    <td class="td-middle">00/00/00</td>
+                    <td class="td-end">
+                        <div class="dropdown">
+                            <button class="btn dropdown-toggle text-dark" type="button" id="dropdownMenuButton1" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
+                                <i class="fas fa-ellipsis-v"></i>
+                            </button>
+                            <div class="dropdown-menu" aria-labelledby="dropdownMenuButton1">
+                                <a class="dropdown-item" asp-controller="Home" asp-action="UsuarioDetalle">Contactar a proveedor</a>
+                                <a class="dropdown-item" asp-controller="Home" asp-action="UsuarioDetalle">Editar</a>
+                                <a class="dropdown-item" asp-controller="Home" asp-action="UsuarioDetalle">Eliminar</a>
+                            </div>
+                        </div>
+                    </td>
+                </tr><tr>                 
+                    <td class="td-first">
+                        Carpintería
+                    </td>
+                    <td class="td-middle">Plomería del golfo</td>
+                    <td class="td-middle">$55,555</td>
+                    <td class="td-middle"><a asp-controller="Publicidad" asp-action="Detalles">Ver preview</a></td>
+                    <td class="td-middle"><span class="badge-custom atrasado" data-bs-toggle="modal" data-bs-target="#leftModal" style="cursor:pointer;">Publicitario</span></td>                    
+                    <td class="td-middle">00/00/00</td>
+                    <td class="td-middle">00/00/00</td>
+                    <td class="td-end">
+                        <div class="dropdown">
+                            <button class="btn dropdown-toggle text-dark" type="button" id="dropdownMenuButton1" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
+                                <i class="fas fa-ellipsis-v"></i>
+                            </button>
+                            <div class="dropdown-menu" aria-labelledby="dropdownMenuButton1">
+                                <a class="dropdown-item" asp-controller="Home" asp-action="UsuarioDetalle">Contactar a proveedor</a>
+                                <a class="dropdown-item" asp-controller="Home" asp-action="UsuarioDetalle">Editar</a>
+                                <a class="dropdown-item" asp-controller="Home" asp-action="UsuarioDetalle">Eliminar</a>
+                            </div>
+                        </div>
+                    </td>
+                </tr>
+                
+
+            
+            </tbody>
+        </table>
+    </div>
+</div>
+
+
+
+<div class="modal fade modal-right" id="filterModal" tabindex="-1" aria-labelledby="filterModalLabel" aria-hidden="true">
+    <div class="modal-dialog">
+        <div class="modal-content">
+            <div class="modal-header">
+                <h5 class="modal-title" id="rightModalLabel">Documentos</h5>                
+                <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+            </div>
+            <div class="modal-body">
+                <form>
+                    <div class="form-group">
+                        <div class="input-group mb-3">
+                            <input type="text" class="form-control" placeholder="Ingresar antecedentes no penales">
+                            <div class="input-group-append">
+                                <button class="btn btn-outline-secondary" type="button">VER</button>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="form-group">
+                        <div class="input-group mb-3">
+                            <input type="text" class="form-control" placeholder="Curriculum">
+                            <div class="input-group-append">
+                                <button class="btn btn-outline-secondary" type="button">VER</button>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="form-group">
+                        <div class="input-group mb-3">
+                            <input type="text" class="form-control" placeholder="INE FRENTE">
+                            <div class="input-group-append">
+                                <button class="btn btn-outline-secondary" type="button">VER</button>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="form-group">
+                        <div class="input-group mb-3">
+                            <input type="text" class="form-control" placeholder="INE DETRAS">
+                            <div class="input-group-append">
+                                <button class="btn btn-outline-secondary" type="button">VER</button>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="form-group">
+                        <div class="input-group mb-3">
+                            <input type="text" class="form-control" placeholder="Comprobante de domicilio">
+                            <div class="input-group-append">
+                                <button class="btn btn-outline-secondary" type="button">VER</button>
+                            </div>
+                        </div>
+                    </div>
+                </form>
+                <hr>
+                <button class="btn btn-primary w-100" data-bs-dismiss="modal">Cerrar</button>
+            </div>
+        </div>
+    </div>
+</div>

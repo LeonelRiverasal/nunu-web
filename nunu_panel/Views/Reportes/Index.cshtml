@@ -1,0 +1,118 @@
+@{
+    ViewData["Title"] = "Reportes";
+    Layout = "~/Views/Shared/_Layout.cshtml";
+}
+<div class="container">
+<div class="row mb-3">
+    <div class="col">
+        <form asp-controller="Pedidos" asp-action="Index">
+            <div class="groupSearch">
+                <svg class="iconSearch" aria-hidden="true" viewBox="0 0 24 24"><g><path d="M21.53 20.47l-3.66-3.66C19.195 15.24 20 13.214 20 11c0-4.97-4.03-9-9-9s-9 4.03-9 9 4.03 9 9 9c2.215 0 4.24-.804 5.808-2.13l3.66 3.66c.147.146.34.22.53.22s.385-.073.53-.22c.295-.293.295-.767.002-1.06zM3.5 11c0-4.135 3.365-7.5 7.5-7.5s7.5 3.365 7.5 7.5-3.365 7.5-7.5 7.5-7.5-3.365-7.5-7.5z"></path></g></svg>
+                <input value="" name="searchTerm" placeholder="Busca por Reportes/ID" type="search" class="inputSearch">
+            </div>
+        </form>
+    </div>
+</div>
+<div class="row">
+    <div class="d-flex justify-content-between align-items-center">
+        <h4 class="title-form">Reportes</h4>
+        <button type="button" class="btn btn-filter" data-bs-toggle="modal" data-bs-target="#filterModal">
+            <i class="fas fa-filter"></i> <!-- Icono de filtro -->
+        </button>
+    </div>
+</div>
+
+<div class="row">
+    <div class="breadcrumb">
+        <a href="/Reportes" class="breadcrumb-item active">Reportes</a> >
+    </div>
+    Mostrando 7 de 100 resultados
+</div>
+
+<div class="col-md-12 mt-3">
+        <table class="table">
+            <thead>
+                <tr>
+                    <th scope="col" class="textTableCenter">ID</th>
+                    <th scope="col" class="textTableCenter">Tipo de reporte</th>
+                    <th scope="col" class="textTableCenter">Razón</th>
+                    <th scope="col" class="textTableCenter">Ciudad</th>
+                    <th scope="col" class="textTableCenter">Tipo de incidencia</th>
+                    <th scope="col" class="textTableCenter">Fecha</th>
+                    <th scope="col" class="textTableCenter"></th>
+                </tr>
+            </thead>
+            <tbody> 
+                <tr>                  
+                    <td class="td-first">
+                        000001
+                    </td>                    
+                    <td class="td-middle">Lorem ipsum dolor</td>                    
+                    <td class="td-middle">Lorem ipsum dolor</td>
+                    <td class="td-middle">Lorem ipsum dolor</td>                    
+                    <td class="td-middle"><span class="badge-custom aprobado" data-bs-toggle="modal" data-bs-target="#estatusModal" style="cursor:pointer;">Resuelto</span></td>                                        
+                    <td class="td-middle">00/00/0000</td>
+                    <td class="td-end">
+                        <div class="dropdown">
+                            <button class="btn dropdown-toggle text-dark" type="button" id="dropdownMenuButton1" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
+                                <i class="fas fa-ellipsis-v"></i>
+                            </button>
+                            <div class="dropdown-menu" aria-labelledby="dropdownMenuButton1">
+                                <a class="dropdown-item" asp-controller="Home" asp-action="UsuarioDetalle">Contactar a proveedor</a>
+                                <a class="dropdown-item" asp-controller="Home" asp-action="UsuarioDetalle">Enviar Correo</a>
+                                <a class="dropdown-item" asp-controller="Home" asp-action="UsuarioDetalle">Llamar</a>
+                            </div>
+                        </div>
+                    </td>
+                </tr>
+                <tr>                 
+                    <td class="td-first">
+                        000001
+                    </td>                    
+                    <td class="td-middle">Lorem ipsum dolor</td>                    
+                    <td class="td-middle">Lorem ipsum dolor</td>
+                    <td class="td-middle">Lorem ipsum dolor</td>                    
+                    <td class="td-middle"><span class="badge-custom atrasado" data-bs-toggle="modal" data-bs-target="#leftModal" style="cursor:pointer;">Sin resolver</span></td>                                        
+                    <td class="td-middle">00/00/0000</td>
+                    <td class="td-end">
+                        <div class="dropdown">
+                            <button class="btn dropdown-toggle text-dark" type="button" id="dropdownMenuButton1" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
+                                <i class="fas fa-ellipsis-v"></i>
+                            </button>
+                            <div class="dropdown-menu" aria-labelledby="dropdownMenuButton1">
+                                <a class="dropdown-item" asp-controller="Home" asp-action="UsuarioDetalle">Contactar a proveedor</a>
+                                <a class="dropdown-item" asp-controller="Home" asp-action="UsuarioDetalle">Enviar Correo</a>
+                                <a class="dropdown-item" asp-controller="Home" asp-action="UsuarioDetalle">Llamar</a>
+                            </div>
+                        </div>
+                    </td>
+                </tr>
+
+            
+            </tbody>
+        </table>
+    </div>
+</div>
+
+
+
+<div class="modal fade modal" id="estatusModal" tabindex="-1" aria-labelledby="filterModalLabel" aria-hidden="true">
+    <div class="modal-dialog">
+        <div class="modal-content">
+            <div class="modal-header">
+                <h5 class="modal-title" id="rightModalLabel">Cambiar estatus</h5>                
+                <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+            </div>
+            <div class="modal-body">
+                <form>
+                    ¿El reporte a sido resuelto?
+                    
+                </form>
+            </div>
+             <div class="modal-footer">
+                        <button type="button" class="btn btn-secondary" data-dismiss="modal">Cancelar</button>
+                        <button type="button" class="btn btn-primary">Cambiar estatus</button>
+                    </div>
+        </div>
+    </div>
+</div>

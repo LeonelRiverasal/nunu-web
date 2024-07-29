@@ -1,0 +1,168 @@
+﻿@{
+    ViewData["Title"] = "Home Page";
+    Layout = "~/Views/Shared/_Layout.cshtml";
+}
+
+<div class="row row-cols-1 row-cols-md-2 row-cols-lg-5">
+    <div class="col mb-4">
+        <div class="custom-card">
+            <div class="card-button">
+            </div>
+            <div class="card-text">
+                <div class="title">Pedidos:</div>
+                <div class="value">9</div>
+            </div>
+        </div>
+    </div>
+    <div class="col mb-4">
+        <div class="custom-card">
+            <div class="card-button">
+            </div>
+            <div class="card-text">
+                <div class="title">Pedidos cancelados:</div>
+                <div class="value">2</div>
+            </div>
+        </div>
+    </div>
+    <div class="col mb-4">
+        <div class="custom-card">
+            <div class="card-button">
+            </div>
+            <div class="card-text">
+                <div class="title">En espera de ser registrados:</div>
+                <div class="value">2</div>
+            </div>
+        </div>
+    </div>
+    <div class="col mb-4">
+        <div class="custom-card">
+            <div class="card-button">
+            </div>
+            <div class="card-text">
+                <div class="title">Soporte técnico:</div>
+                <div class="value">11</div> solicitudes
+            </div>
+        </div>
+    </div>
+    <div class="col mb-4">
+        <div class="custom-card">
+            <div class="card-button">
+            </div>
+            <div class="card-text">
+                <div class="title">Otro:</div>
+                <div class="value">11</div>
+            </div>
+        </div>
+    </div>
+</div>
+
+<div class="row ">
+    <div class="col-12 col-md-2 text-center align-content-center">
+        <span class="fw-bolder fs-5">Elige un servicio</span>
+    </div>
+    <div class="col-12 col-md-10">
+        <select class="form-select">
+            <option value="1">Carpintería</option>
+        </select>
+    </div>
+</div>
+
+<div class="custom-button mt-3">
+    <div class="customLabel">
+        <label for="temporalidadBtn">Temporalidad</label>
+    </div>
+    <button id="temporalidadBtn" class="btn customButtonLabel" data-bs-toggle="modal" data-bs-target="#temporalidadModal">
+        <!-- This will be set to the current month and year initially -->
+        <span id="temporalidadLabel"></span>
+    </button>
+</div>
+
+ <!-- Bar Chart -->
+<div class="card shadow mb-4 mt-3">
+    <div class="card-body">
+        <div class="chart-bar">
+            <canvas id="myBarChart"></canvas> 
+        </div>
+    </div>
+</div>
+
+
+<!-- Modal -->
+<div class="modal fade" id="temporalidadModal" tabindex="-1" role="dialog" aria-labelledby="temporalidadModalLabel" aria-hidden="true">
+    <div class="modal-dialog" role="document">
+        <div class="modal-content">
+            <div class="modal-header">
+                <h5 class="modal-title fw-bolder fs-3" id="temporalidadModalLabel">Mensual</h5>
+                <button type="button" class="close" data-bs-dismiss="modal" aria-label="Close">
+                    <span aria-hidden="true">&times;</span>
+                </button>
+            </div>
+            <div class="modal-body">
+                <div class="form-group">
+                    <label for="selectYear">Selecciona el año</label>
+                    <select id="selectYear" class="form-control">
+                        <!-- JavaScript will populate the options -->
+                    </select>
+                </div>
+                <div class="form-group">
+                    <label for="selectMonth">Selecciona el mes</label>
+                    <select id="selectMonth" class="form-control">
+                        <!-- JavaScript will populate the options -->
+                    </select>
+                </div>
+            </div>
+            <div class="modal-footer">
+                <button type="button" class="btn btn-cancel modal-TwoButtons" data-bs-dismiss="modal">Cancelar</button>
+                <button type="button" class="btn btn-apply modal-TwoButtons" id="applyBtn">Aplicar</button>
+            </div>
+        </div>
+    </div>
+</div>
+
+<script>
+    document.addEventListener('DOMContentLoaded', (event) => {
+        const currentDate = new Date();
+        const currentYear = currentDate.getFullYear();
+        const currentMonth = currentDate.toLocaleString('default', { month: 'long' });
+        const yearSelect = document.getElementById('selectYear');
+        const monthSelect = document.getElementById('selectMonth');
+        const temporalidadLabel = document.getElementById('temporalidadLabel');
+
+        // Populate year select options
+        for (let i = currentYear; i >= currentYear - 2; i--) {
+            const option = document.createElement('option');
+            option.value = i;
+            option.textContent = i;
+            yearSelect.appendChild(option);
+        }
+
+        // Populate month select options
+        const months = [
+            'Enero', 'Febrero', 'Marzo', 'Abril', 'Mayo', 'Junio', 
+            'Julio', 'Agosto', 'Septiembre', 'Octubre', 'Noviembre', 'Diciembre'
+        ];
+        months.forEach((month, index) => {
+            const option = document.createElement('option');
+            option.value = index + 1;
+            option.textContent = month;
+            monthSelect.appendChild(option);
+        });
+
+        // Set default values
+        yearSelect.value = currentYear;
+        monthSelect.value = currentDate.getMonth() + 1; // +1 because getMonth() returns 0 for January
+
+        temporalidadLabel.textContent = `${currentMonth}-${currentYear}`;
+
+        // Apply button event
+        document.getElementById('applyBtn').addEventListener('click', () => {
+            const selectedYear = yearSelect.value;
+            const selectedMonthIndex = monthSelect.value - 1; // -1 to convert to zero-indexed
+            const selectedMonth = months[selectedMonthIndex];
+            temporalidadLabel.textContent = `${selectedMonth}-${selectedYear}`;
+            $('#temporalidadModal').modal('hide');
+        });
+    });
+</script>
+<script src="https://cdn.jsdelivr.net/npm/chart.js"></script>
+<script src="~/js/chart-bar-demo.js"></script>

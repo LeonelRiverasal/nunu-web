@@ -1,0 +1,199 @@
+@{
+    ViewData["Title"] = "Pedidos";
+    Layout = "~/Views/Shared/_Layout.cshtml";
+}
+<div class="container">
+<div class="row mb-3">
+    <div class="col">
+        <form asp-controller="Pedidos" asp-action="Index">
+            <div class="groupSearch">
+                <svg class="iconSearch" aria-hidden="true" viewBox="0 0 24 24"><g><path d="M21.53 20.47l-3.66-3.66C19.195 15.24 20 13.214 20 11c0-4.97-4.03-9-9-9s-9 4.03-9 9 4.03 9 9 9c2.215 0 4.24-.804 5.808-2.13l3.66 3.66c.147.146.34.22.53.22s.385-.073.53-.22c.295-.293.295-.767.002-1.06zM3.5 11c0-4.135 3.365-7.5 7.5-7.5s7.5 3.365 7.5 7.5-3.365 7.5-7.5 7.5-7.5-3.365-7.5-7.5z"></path></g></svg>
+                <input value="" name="searchTerm" placeholder="Busca por id/usuario" type="search" class="inputSearch">
+            </div>
+        </form>
+    </div>
+</div>
+<div class="row">
+    <div class="d-flex justify-content-between align-items-center">
+        <h4 class="title-form">Pedidos</h4>
+        <button type="button" class="btn btn-filter" data-bs-toggle="modal" data-bs-target="#estatusModal">
+            <i class="fas fa-filter"></i> <!-- Icono de filtro -->
+        </button>
+    </div>
+</div>
+
+<div class="row">
+    <div class="breadcrumb">
+        <a href="/Pedidos" class="breadcrumb-item active">Pedidos</a> >
+    </div>
+    Mostrando 7 de 100 resultados
+</div>
+
+<div class="col-md-12 mt-3">
+        <table class="table">
+            <thead>
+                <tr>
+                    <th scope="col" class="textTableCenter"></th>
+                    <th scope="col" class="textTableCenter">ID</th>
+                    <th scope="col" class="textTableCenter"></th>
+                    <th scope="col" class="textTableCenter">Fecha de servicio</th>
+                    <th scope="col" class="textTableCenter">Servicio</th>
+                    <th scope="col" class="textTableCenter">Cliente</th>
+                    <th scope="col" class="textTableCenter">Proveedor</th>
+                    <th scope="col" class="textTableCenter">Dirección</th>
+                    <th scope="col" class="textTableCenter">Ciudad</th>
+                    <th scope="col" class="textTableCenter"></th>
+                </tr>
+            </thead>
+            <tbody> 
+                <tr>
+                    <td class="td-first-go"><div class="b-fg">1</div></td>                    
+                    <td class="td-first">
+                        000001
+                    </td>
+                    <td class="td-middle"><span class="badge-custom por-aprobar">En servicio</span></td>
+                    <td class="td-middle">00/00/0000</td>
+                    <td class="td-middle">Plomería</td>
+                    <td class="td-middle">Lorem ipsum dolor</td>
+                    <td class="td-middle">Lorem ipsum dolor</td>
+                    <td class="td-middle">Lorem ipsum dolor</td>
+                    <td class="td-middle">Lorem ipsum dolor</td>                 
+                    <td class="td-end">
+                        <div class="dropdown">
+                            <button class="btn dropdown-toggle text-dark" type="button" id="dropdownMenuButton1" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
+                                <i class="fas fa-ellipsis-v"></i>
+                            </button>
+                            <div class="dropdown-menu" aria-labelledby="dropdownMenuButton1">
+                                <a class="dropdown-item" asp-controller="Home" asp-action="UsuarioDetalle">Contactar a proveedor</a>
+                                <a class="dropdown-item" asp-controller="Home" asp-action="UsuarioDetalle">Enviar correo</a>
+                                <a class="dropdown-item" asp-controller="Home" asp-action="UsuarioDetalle">Llamar</a>
+                            </div>
+                        </div>
+                    </td>
+                </tr>
+                <tr>
+                    <td class="td-first-go"><div class="b-fg">2</div></td>                    
+                    <td class="td-first">
+                        000001
+                    </td>
+                    <td class="td-middle"><span class="badge-custom aprobado">Aprobado</span></td>
+                    <td class="td-middle">00/00/0000</td>
+                    <td class="td-middle">Plomería</td>
+                    <td class="td-middle">Lorem ipsum dolor</td>
+                    <td class="td-middle">Lorem ipsum dolor</td>
+                    <td class="td-middle">Lorem ipsum dolor</td>
+                    <td class="td-middle">Lorem ipsum dolor</td>                 
+                    <td class="td-end">
+                        <div class="dropdown">
+                            <button class="btn dropdown-toggle text-dark" type="button" id="dropdownMenuButton1" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
+                                <i class="fas fa-ellipsis-v"></i>
+                            </button>
+                            <div class="dropdown-menu" aria-labelledby="dropdownMenuButton1">
+                                <a class="dropdown-item" asp-controller="Home" asp-action="UsuarioDetalle">Contactar a proveedor</a>
+                                <a class="dropdown-item" asp-controller="Home" asp-action="UsuarioDetalle">Enviar correo</a>
+                                <a class="dropdown-item" asp-controller="Home" asp-action="UsuarioDetalle">Llamar</a>
+                            </div>
+                        </div>
+                    </td>
+                </tr>
+                <tr>
+                    <td class="td-first-go"><div class="b-fg">3</div></td>                    
+                    <td class="td-first">
+                        000001
+                    </td>
+                    <td class="td-middle"><span class="badge-custom terminado">Terminado</span></td>
+                    <td class="td-middle">00/00/0000</td>
+                    <td class="td-middle">Plomería</td>
+                    <td class="td-middle">Lorem ipsum dolor</td>
+                    <td class="td-middle">Lorem ipsum dolor</td>
+                    <td class="td-middle">Lorem ipsum dolor</td>
+                    <td class="td-middle">Lorem ipsum dolor</td>                 
+                    <td class="td-end">
+                        <div class="dropdown">
+                            <button class="btn dropdown-toggle text-dark" type="button" id="dropdownMenuButton1" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
+                                <i class="fas fa-ellipsis-v"></i>
+                            </button>
+                            <div class="dropdown-menu" aria-labelledby="dropdownMenuButton1">
+                                <a class="dropdown-item" asp-controller="Home" asp-action="UsuarioDetalle">Contactar a proveedor</a>
+                                <a class="dropdown-item" asp-controller="Home" asp-action="UsuarioDetalle">Enviar correo</a>
+                                <a class="dropdown-item" asp-controller="Home" asp-action="UsuarioDetalle">Llamar</a>
+                            </div>
+                        </div>
+                    </td>
+                </tr>
+
+            
+            </tbody>
+        </table>
+    </div>
+</div>
+
+<!-- Modal -->
+<div class="modal fade" id="estatusModal" tabindex="-1" role="dialog" aria-labelledby="estatusModalLabel" aria-hidden="true">
+    <div class="modal-dialog" role="document">
+        <div class="modal-content">
+            <div class="modal-header">
+                <h5 class="modal-title fw-bolder fs-3" id="estatusModalLabel">Estatus</h5>
+                <button type="button" class="close" data-bs-dismiss="modal" aria-label="Close">
+                    <span aria-hidden="true">&times;</span>
+                </button>
+            </div>
+            <div class="modal-body">
+                <div class="form-group">
+                    <div class="status-item">
+                        <span style="color: #494949;">Terminado</span>
+                        <label class="switch">
+                            <input type="checkbox">
+                            <span class="slider round"></span>
+                        </label>
+                    </div><hr style="color: #b2b2b2;">
+                    <div class="status-item">
+                        <span style="color: #22A70D;">Aprobado</span>
+                        <label class="switch">
+                            <input type="checkbox">
+                            <span class="slider round"></span>
+                        </label>
+                    </div><hr style="color: #b2b2b2;">
+                    <div class="status-item">
+                        <span style="color: #0E46B6;">Por asignar</span>
+                        <label class="switch">
+                            <input type="checkbox">
+                            <span class="slider round"></span>
+                        </label>
+                    </div><hr style="color: #b2b2b2;">
+                    <div class="status-item">
+                        <span style="color: #C09400;">Por pagar</span>
+                        <label class="switch">
+                            <input type="checkbox">
+                            <span class="slider round"></span>
+                        </label>
+                    </div><hr style="color: #b2b2b2;">
+                    <div class="status-item">
+                        <span style="color: #DB7479;">Cancelados</span>
+                        <label class="switch">
+                            <input type="checkbox">
+                            <span class="slider round"></span>
+                        </label>
+                    </div><hr style="color: #b2b2b2;">
+                    <div class="status-item">
+                        <span style="color: #FA8035;">En camino</span>
+                        <label class="switch">
+                            <input type="checkbox">
+                            <span class="slider round"></span>
+                        </label>
+                    </div><hr style="color: #b2b2b2;">
+                    <div class="status-item">
+                        <span style="color: #FA3535;">Atrasado</span>
+                        <label class="switch">
+                            <input type="checkbox">
+                            <span class="slider round"></span>
+                        </label>
+                    </div><hr style="color: #b2b2b2;">
+                </div>
+            </div>
+            <div class="modal-footer">
+                <button type="button" class="btn btn-apply modal-onlyOneButton" data-bs-dismiss="modal">Aceptar</button>
+            </div>
+        </div>
+    </div>
+</div>
