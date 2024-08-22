@@ -1,3 +1,4 @@
+@model List<nunu_panel.Models.ServicioProveedorModel>
 @{
     ViewData["Title"] = "Servicios";
     Layout = "~/Views/Shared/_Layout.cshtml";
@@ -8,7 +9,7 @@
         <form asp-controller="Servicios" asp-action="Index">
             <div class="groupSearch">
                 <svg class="iconSearch" aria-hidden="true" viewBox="0 0 24 24"><g><path d="M21.53 20.47l-3.66-3.66C19.195 15.24 20 13.214 20 11c0-4.97-4.03-9-9-9s-9 4.03-9 9 4.03 9 9 9c2.215 0 4.24-.804 5.808-2.13l3.66 3.66c.147.146.34.22.53.22s.385-.073.53-.22c.295-.293.295-.767.002-1.06zM3.5 11c0-4.135 3.365-7.5 7.5-7.5s7.5 3.365 7.5 7.5-3.365 7.5-7.5 7.5-7.5-3.365-7.5-7.5z"></path></g></svg>
-                <input value="" name="searchTerm" placeholder="Busca por Servicios/ID" type="search" class="inputSearch">
+                <input value="" id="searchInput" name="searchTerm" placeholder="Busca por Servicios/ID" type="search" class="inputSearch">
             </div>
         </form>
     </div>
@@ -17,10 +18,10 @@
     <div class="d-flex justify-content-between align-items-center">
         <h4 class="title-form">Servicios</h4>
         <div>
-            <button type="button" class="btn btn-primary" data-bs-toggle="modal" data-bs-target="#addModal">Añadir un servicio</button>
+            @* <button type="button" class="btn btn-primary" data-bs-toggle="modal" data-bs-target="#addModal">Añadir un servicio</button>
         <button type="button" class="btn btn-filter" data-bs-toggle="modal" data-bs-target="#filterModal">
             <i class="fas fa-filter"></i> <!-- Icono de filtro -->
-        </button>
+        </button> *@
         </div>
         
     </div>
@@ -30,89 +31,70 @@
     <div class="breadcrumb">
         <a href="/Servicios" class="breadcrumb-item active">Servicios</a> >
     </div>
-    Mostrando 7 de 100 resultados
+    Mostrando @Model.Count 
 </div>
 
 <div class="col-md-12 mt-3">
         <table class="table">
-            <thead>
-                <tr>
-                    <th scope="col" class="">ID</th>
-                    <th scope="col" class="">Servicio</th>
-                    <th scope="col" class="">Proveedores</th>
-                    <th scope="col" class="">Ciudad</th>
-                    <th scope="col" class=""></th>
-                </tr>
-            </thead>
-            <tbody> 
-                <tr>                  
-                    <td class="td-first">
-                        000001
-                    </td>
-                    <td class="td-middle">Diseño</td>
-                    <td class="td-middle"><a asp-controller="Servicios" asp-action="Historial">Ver Estado</a></td>                                                                                
-                    <td class="td-middle">Lorep ipsum</td>
-                    <td class="td-end">
-                        <div class="dropdown">
-                            <button class="btn dropdown-toggle text-dark" type="button" id="dropdownMenuButton1" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
-                                <i class="fas fa-ellipsis-v"></i>
-                            </button>
-                            <div class="dropdown-menu" aria-labelledby="dropdownMenuButton1">
-                                <a class="dropdown-item" asp-controller="Home" asp-action="UsuarioDetalle">Contactar a proveedor</a>
-                                <a class="dropdown-item" asp-controller="Home" asp-action="UsuarioDetalle">Enviar Correo</a>
-                                <a class="dropdown-item" asp-controller="Home" asp-action="UsuarioDetalle">Llamar</a>
-                            </div>
+    <thead>
+        <tr>
+            <th scope="col" class="">ID</th>
+            <th scope="col" class="">Servicio</th>
+            <th scope="col" class="">Proveedor</th>
+            <th scope="col" class="">Descripción</th>
+            <th scope="col" class="">Duración</th>
+            <th scope="col" class="">Valoración</th>
+            <th scope="col" class="">Imagen</th>
+            <th scope="col" class="">Categoria</th>
+            <th scope="col" class=""></th>
+        </tr>
+    </thead>
+    <tbody>
+        @foreach (var servicio in Model)
+        {
+            <tr>
+                <td class="td-first">@servicio.id_servicio</td>
+                <td class="td-middle">@servicio.tipo_servicio</td>
+                <td class="td-middle">@servicio.Proveedores.nombre_razon_social</td>
+                <td class="td-middle">@servicio.descripcion</td>
+                <td class="td-middle">@servicio.Duracion</td>
+                <td class="td-middle">@servicio.Rating/5</td>
+                <td class="td-middle"><a href="@servicio.imagen_servicio" target="_blank">Ver</a></td>
+                @* <td class="td-middle">@servicio.Categoria.CategoriaNombre</td> *@
+                <td class="td-end">
+                    <div class="dropdown">
+                        <button class="btn dropdown-toggle text-dark" type="button" id="dropdownMenuButton1" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
+                            <i class="fas fa-ellipsis-v"></i>
+                        </button>
+                        <div class="dropdown-menu" aria-labelledby="dropdownMenuButton1">                                                      
+                            <a class="dropdown-item" data-bs-toggle="modal" data-bs-target="#deleteUserModal" data-id="@servicio.id_servicio">Dar de baja</a>
                         </div>
-                    </td>
-                </tr>
-                <tr>                  
-                    <td class="td-first">
-                        000001
-                    </td>
-                    <td class="td-middle">Diseño</td>
-                    <td class="td-middle"><a asp-controller="Proveedores" asp-action="Historial">Ver Estado</a></td>                                                                                
-                    <td class="td-middle">Lorep ipsum</td>
-                    <td class="td-end">
-                        <div class="dropdown">
-                            <button class="btn dropdown-toggle text-dark" type="button" id="dropdownMenuButton1" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
-                                <i class="fas fa-ellipsis-v"></i>
-                            </button>
-                            <div class="dropdown-menu" aria-labelledby="dropdownMenuButton1">
-                                <a class="dropdown-item" asp-controller="Home" asp-action="UsuarioDetalle">Contactar a proveedor</a>
-                                <a class="dropdown-item" asp-controller="Home" asp-action="UsuarioDetalle">Enviar Correo</a>
-                                <a class="dropdown-item" asp-controller="Home" asp-action="UsuarioDetalle">Llamar</a>
-                            </div>
-                        </div>
-                    </td>
-                </tr>
-                <tr>                  
-                    <td class="td-first">
-                        000001
-                    </td>
-                    <td class="td-middle">Diseño</td>
-                    <td class="td-middle"><a asp-controller="Proveedores" asp-action="Historial">Ver Estado</a></td>                                                                                
-                    <td class="td-middle">Lorep ipsum</td>
-                    <td class="td-end">
-                        <div class="dropdown">
-                            <button class="btn dropdown-toggle text-dark" type="button" id="dropdownMenuButton1" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
-                                <i class="fas fa-ellipsis-v"></i>
-                            </button>
-                            <div class="dropdown-menu" aria-labelledby="dropdownMenuButton1">
-                                <a class="dropdown-item" asp-controller="Home" asp-action="UsuarioDetalle">Contactar a proveedor</a>
-                                <a class="dropdown-item" asp-controller="Home" asp-action="UsuarioDetalle">Enviar Correo</a>
-                                <a class="dropdown-item" asp-controller="Home" asp-action="UsuarioDetalle">Llamar</a>
-                            </div>
-                        </div>
-                    </td>
-                </tr>
-
-            
-            </tbody>
-        </table>
+                    </div>
+                </td>
+            </tr>
+        }
+    </tbody>
+</table>
     </div>
 </div>
 
-
+<div class="modal fade" id="deleteUserModal" tabindex="-1" aria-labelledby="deleteUserModalLabel" aria-hidden="true">
+  <div class="modal-dialog">
+    <div class="modal-content">
+      <div class="modal-header">
+        <h5 class="modal-title" id="deleteUserModalLabel">Eliminar Servicio</h5>
+        <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+      </div>
+      <div class="modal-body">
+        ¿Estás seguro que deseas eliminar a este Servicio?
+      </div>
+      <div class="modal-footer">
+        <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Cancelar</button>
+        <button type="button" class="btn btn-danger" id="confirmDeleteButton">Eliminar</button>
+      </div>
+    </div>
+  </div>
+</div>
 
 <div class="modal fade" id="addModal" tabindex="-1" role="dialog" aria-labelledby="calificacionodalLabel" aria-hidden="true">
     <div class="modal-dialog" role="document">
@@ -204,3 +186,62 @@
         </div>
     </div>
 </div>
+<script>
+ document.addEventListener('DOMContentLoaded', function () {
+        const searchInput = document.getElementById('searchInput');
+        const table = document.querySelector('.table tbody');
+
+        searchInput.addEventListener('keyup', function () {
+            const searchTerm = searchInput.value.toLowerCase();
+            const rows = table.querySelectorAll('tr');
+
+            rows.forEach(function (row) {
+                const idCell = row.querySelector('td:nth-child(1)');
+                const nameCell = row.querySelector('td:nth-child(2)');
+
+                const idText = idCell.textContent.toLowerCase();
+                const nameText = nameCell.textContent.toLowerCase();
+
+                if (idText.includes(searchTerm) || nameText.includes(searchTerm)) {
+                    row.style.display = '';
+                } else {
+                    row.style.display = 'none';
+                }
+            });
+        });
+        
+        
+        const deleteUserModal = new bootstrap.Modal(document.getElementById('deleteUserModal'));
+        const confirmDeleteButton = document.getElementById('confirmDeleteButton');
+        let userIdToDelete;
+
+        document.querySelectorAll('[data-bs-toggle="modal"]').forEach(function (button) {
+            button.addEventListener('click', function () {
+                userIdToDelete = this.getAttribute('data-id');
+            });
+        });
+
+        confirmDeleteButton.addEventListener('click', function () {
+            fetch(`/Servicios/EliminarServicio?idServicio=${userIdToDelete}`, {
+                method: 'DELETE',
+                headers: {
+                    'Content-Type': 'application/json',
+                    'X-CSRF-TOKEN': document.querySelector('input[name="__RequestVerificationToken"]').value
+                }
+            })
+            .then(response => response.json())
+            .then(data => {
+                if (data) {
+                    document.querySelector(`a[data-id="${userIdToDelete}"]`).closest('tr').remove();
+                    deleteUserModal.hide();
+                     const modalMessage = document.getElementById('modalMessage');
+            $('#successModal').modal('show');
+            modalMessage.innerText= data.message;
+                } else {
+                    alert(data.message);
+                }
+            })
+            .catch(error => console.error('Error:', error));
+        });
+    });
+</script>

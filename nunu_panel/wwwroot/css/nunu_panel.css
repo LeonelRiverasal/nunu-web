@@ -508,7 +508,7 @@ input:checked + .slider:before {
     display: flex;
     align-items: center;
 }
-
+/*
 .dropdown-menu {
     display: none;
     position: absolute;
@@ -535,7 +535,7 @@ input:checked + .slider:before {
 
 .dropdown:focus-within .dropdown-menu {
     display: block;
-}
+}*/
 
 .modal-right .modal-dialog {
     position: absolute;

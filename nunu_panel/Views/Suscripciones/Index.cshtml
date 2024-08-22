@@ -1,0 +1,299 @@
+@model List<nunu_panel.Models.SuscripcionesModel>
+@{
+    ViewData["Title"] = "Suscripciones";
+    Layout = "~/Views/Shared/_Layout.cshtml";
+}
+<div class="container">
+<div class="row mb-3">
+    <div class="col">
+        <form asp-controller="Pagos" asp-action="Index">
+            <div class="groupSearch">
+                <svg class="iconSearch" aria-hidden="true" viewBox="0 0 24 24"><g><path d="M21.53 20.47l-3.66-3.66C19.195 15.24 20 13.214 20 11c0-4.97-4.03-9-9-9s-9 4.03-9 9 4.03 9 9 9c2.215 0 4.24-.804 5.808-2.13l3.66 3.66c.147.146.34.22.53.22s.385-.073.53-.22c.295-.293.295-.767.002-1.06zM3.5 11c0-4.135 3.365-7.5 7.5-7.5s7.5 3.365 7.5 7.5-3.365 7.5-7.5 7.5-7.5-3.365-7.5-7.5z"></path></g></svg>
+                <input value="" id="searchInput" name="searchTerm" placeholder="Busca por proveedor/ID" type="search" class="inputSearch">
+            </div>
+        </form>
+    </div>
+</div>
+<div class="row">
+    <div class="d-flex justify-content-between align-items-center">
+        <h4 class="title-form">Suscripciones</h4>
+       
+    </div>
+</div>
+
+<div class="row">
+    <div class="breadcrumb">
+        <a href="/Pagos" class="breadcrumb-item active">Suscripciones</a> >
+    </div>
+    Mostrando @Model.Count
+</div>
+
+<div class="col-md-12 mt-3">
+       <table class="table">
+            <thead>
+                <tr>
+                    <th scope="col" class="">ID</th>
+                    <th scope="col" class=""></th>
+                    <th scope="col" class="">Proveedor</th>
+                    @* <th scope="col" class="textTableCenter">Ciudad</th> *@
+                    @* <th scope="col" class="textTableCenter">Reputación</th> *@
+                    <th scope="col" class="">Documentos</th>
+                    <th scope="col" class="">Teléfono</th>
+                    <th scope="col" class="">Fecha de registro</th>
+                    <th scope="col" class=""></th>
+                </tr>
+            </thead>
+            <tbody> 
+                 @foreach (var proveedor in Model)
+                {
+                     @if (proveedor.suscripcion)
+                    {
+                        <tr class="provider-row @(proveedor.verificado ? "verified" : "not-verified")">
+                        <td class="td-first">@proveedor.id_proveedor</td>
+                        @if (proveedor.verificado)
+                        {
+                            <td class="td-middle"><span class="badge-custom aprobado" data-bs-toggle="modal" data-bs-target="#leftModal" style="cursor:pointer;">Verificado</span></td>
+                        }
+                        else
+                        {
+                            <td class="td-middle"><span class="badge-custom en-camino" data-bs-toggle="modal" data-bs-target="#leftModal" style="cursor:pointer;">Revisar</span></td>
+                        }
+                        <td class="td-middle">@proveedor.nombre_razon_social</td>
+                        <td class="td-middle">
+                            <a href="#" data-bs-toggle="modal" data-bs-target="#filterModal"
+                            data-id="@proveedor.id_proveedor"
+                            data-antecedentes="@proveedor.antecedentes_penales"
+                            data-ine-frente="@proveedor.ine_frente"
+                            data-ine-reverso="@proveedor.ine_reverso"
+                            data-curriculum="@proveedor.curriculum"
+                            data-comprobante-domicilio="@proveedor.comprobante_domicilio">
+                                Ver documentos
+                            </a>
+                        </td>
+                        <td class="td-middle">@proveedor.telefono</td>
+                        <td class="td-middle">@proveedor.fecha_registro.ToString("dd/MM/yyyy")</td>
+                        <td class="td-end">
+                            <div class="dropdown">
+                                <button class="btn dropdown-toggle text-dark" type="button" id="dropdownMenuButton1" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
+                                    <i class="fas fa-ellipsis-v"></i>
+                                </button>
+                                <div class="dropdown-menu" aria-labelledby="dropdownMenuButton1">
+                                     <a class="dropdown-item" data-bs-toggle="modal" data-bs-target="#deleteUserModal" data-id="@proveedor.id_proveedor">Quitar Suscripción</a> 
+                                </div>
+                            </div>
+                        </td>
+                    </tr>
+                    }
+                }
+               
+               
+
+            
+            </tbody>
+        </table>
+    </div>
+</div>
+
+
+<div class="modal fade" id="deleteUserModal" tabindex="-1" aria-labelledby="deleteUserModalLabel" aria-hidden="true">
+  <div class="modal-dialog">
+    <div class="modal-content">
+      <div class="modal-header">
+        <h5 class="modal-title" id="deleteUserModalLabel">Quitar Suscripción</h5>
+        <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+      </div>
+      <div class="modal-body">
+        ¿Estás seguro que deseas quitar la Suscripción a este proveedor?
+      </div>
+      <div class="modal-footer">
+        <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Cancelar</button>
+        <button type="button" class="btn btn-danger" id="confirmDeleteButton">Quitar Suscripción</button>
+      </div>
+    </div>
+  </div>
+</div>
+
+
+
+<div class="modal fade modal-right" id="filterModal" tabindex="-1" aria-labelledby="filterModalLabel" aria-hidden="true">
+    <div class="modal-dialog">
+        <div class="modal-content">
+            <div class="modal-header">
+                <h5 class="modal-title" id="rightModalLabel">Documentos</h5>                
+                <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+            </div>
+            <div class="modal-body">
+                <form>
+                    <div class="form-group">
+                        <div class="input-group mb-3">
+                            <input type="text" class="form-control" placeholder="Ingresar antecedentes no penales">
+                            <div class="input-group-append">
+                                <button class="btn btn-outline-secondary" type="button">VER</button>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="form-group">
+                        <div class="input-group mb-3">
+                            <input type="text" class="form-control" placeholder="Curriculum">
+                            <div class="input-group-append">
+                                <button class="btn btn-outline-secondary" type="button">VER</button>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="form-group">
+                        <div class="input-group mb-3">
+                            <input type="text" class="form-control" placeholder="INE FRENTE">
+                            <div class="input-group-append">
+                                <button class="btn btn-outline-secondary" type="button">VER</button>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="form-group">
+                        <div class="input-group mb-3">
+                            <input type="text" class="form-control" placeholder="INE DETRAS">
+                            <div class="input-group-append">
+                                <button class="btn btn-outline-secondary" type="button">VER</button>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="form-group">
+                        <div class="input-group mb-3">
+                            <input type="text" class="form-control" placeholder="Comprobante de domicilio">
+                            <div class="input-group-append">
+                                <button class="btn btn-outline-secondary" type="button">VER</button>
+                            </div>
+                        </div>
+                    </div>
+                </form>
+                <hr>
+                <button class="btn btn-primary w-100" data-bs-dismiss="modal">Cerrar</button>
+            </div>
+        </div>
+    </div>
+</div>
+<script src="https://code.jquery.com/jquery-3.5.1.min.js"></script>
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.16.0/umd/popper.min.js"></script>
+  <script src="https://maxcdn.bootstrapcdn.com/bootstrap/4.5.2/js/bootstrap.min.js"></script>
+
+ <script>
+
+
+var filterModal = document.getElementById('filterModal');
+    filterModal.addEventListener('show.bs.modal', function (event) {
+        var button = event.relatedTarget; 
+        var id = button.getAttribute('data-id');
+        var antecedentes = button.getAttribute('data-antecedentes');
+        var ineFrente = button.getAttribute('data-ine-frente');
+        var ineReverso = button.getAttribute('data-ine-reverso');
+        var curriculum = button.getAttribute('data-curriculum');
+        var comprobanteDomicilio = button.getAttribute('data-comprobante-domicilio');        
+        filterModal.querySelector('input[placeholder="idder"]').value = id;
+        filterModal.querySelector('input[placeholder="ANTECEDENTES"]').value = antecedentes;
+        filterModal.querySelector('input[placeholder="INE FRENTE"]').value = ineFrente;
+        filterModal.querySelector('input[placeholder="INE DETRAS"]').value = ineReverso;
+        filterModal.querySelector('input[placeholder="Curriculum"]').value = curriculum;
+        filterModal.querySelector('input[placeholder="Comprobante de domicilio"]').value = comprobanteDomicilio;
+    });
+
+
+     const searchInput = document.getElementById('searchInput');
+        const table = document.querySelector('.table tbody');
+
+        searchInput.addEventListener('keyup', function () {
+            const searchTerm = searchInput.value.toLowerCase();
+            const rows = table.querySelectorAll('tr');
+
+            rows.forEach(function (row) {
+                const idCell = row.querySelector('td:nth-child(1)');
+                const nameCell = row.querySelector('td:nth-child(3)');
+
+                const idText = idCell.textContent.toLowerCase();
+                const nameText = nameCell.textContent.toLowerCase();
+
+                if (idText.includes(searchTerm) || nameText.includes(searchTerm)) {
+                    row.style.display = '';
+                } else {
+                    row.style.display = 'none';
+                }
+            });
+        });
+        document.querySelectorAll('.view-document-button').forEach(function(button) {
+        button.addEventListener('click', function () {
+            var inputId = this.getAttribute('data-input-id');
+            var inputValue = document.getElementById(inputId).value;
+            if (inputValue) {
+                window.open(inputValue, '_blank');
+            } else {
+                alert('No se ha proporcionado un enlace válido.');
+            }
+        });
+    });
+
+    const deleteUserModal = new bootstrap.Modal(document.getElementById('deleteUserModal'));
+        const confirmDeleteButton = document.getElementById('confirmDeleteButton');
+        let userIdToDelete;
+
+        document.querySelectorAll('[data-bs-toggle="modal"]').forEach(function (button) {
+            button.addEventListener('click', function () {
+                userIdToDelete = this.getAttribute('data-id');
+                console.log(userIdToDelete);
+            });
+        });
+
+        confirmDeleteButton.addEventListener('click', function () {            
+            fetch(`/Suscripciones/QuitarSub?idProveedor=${userIdToDelete}`, {
+                method: 'PUT',
+                headers: {
+                    'Content-Type': 'application/json',
+                    'X-CSRF-TOKEN': document.querySelector('input[name="__RequestVerificationToken"]').value
+                }
+            })
+            .then(response => response.json())
+            .then(data => {
+                if (data.success) {
+                    document.querySelector(`a[data-id="${userIdToDelete}"]`).closest('tr').remove();
+                    deleteUserModal.hide();
+                     const modalMessage = document.getElementById('modalMessage');
+            $('#successModal').modal('show');
+            modalMessage.innerText= data.message;
+                } else {
+                 //   alert(data.message);
+                }
+            })
+            .catch(error => console.error('Error:', error));
+        });
+        document.querySelectorAll('[data-bs-toggle="modal"]').forEach(function (button) {
+            button.addEventListener('click', function () {
+                userIdToDelete = this.getAttribute('data-id');
+                console.log(userIdToDelete);
+            });
+        });
+        const filtroModal = new bootstrap.Modal(document.getElementById('filterModal'));
+        document.getElementById('aprovarProveedor').addEventListener('click', function () {
+            var idderpro = document.getElementById("idproveedor").value;
+            fetch(`/Proveedores/AprovarProveedor?idProveedor=${idderpro}`, {
+                method: 'POST',
+                headers: {
+                    'Content-Type': 'application/json',
+                    'X-CSRF-TOKEN': document.querySelector('input[name="__RequestVerificationToken"]').value
+                }
+            })
+            .then(response => response.json())
+            .then(data => {
+                if (data) {                    
+                    filtroModal.hide();
+                    //alert(data.message);
+                    const modalMessage = document.getElementById('modalMessage');
+            $('#successModal').modal('show');
+            $('#deleteUserModal').modal('hide');
+            modalMessage.innerText= data.message;
+                } else {
+                    $('#successModal').modal('show');
+                    $('#deleteUserModal').modal('hide');
+                    
+                    //alert(data.message);
+                }
+            })
+            .catch(error => console.error('Error:', error));
+        });
+  </script>

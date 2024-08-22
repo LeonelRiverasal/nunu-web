@@ -1,0 +1,140 @@
+@{
+    ViewData["Title"] = "Home Page";
+    Layout = "~/Views/Shared/_LoginLayout.cshtml";
+}
+<style>
+    
+body, html {
+    height: 100%;
+    margin: 0;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    background-color: #f8f9fa;
+}
+
+.password-icon {
+    cursor: pointer;
+    position: absolute;
+    top: 50%;
+    right: 10px;
+    transform: translateY(-50%);
+}
+
+.google-login-btn {
+    width: 300px;
+    margin: auto;
+    margin-top: 20px;
+    display: flex;
+    align-items: center;
+    padding: 3px;
+    font-size: 1rem;
+    border: 1px solid #ccc;
+    border-radius: 4px;
+    background-color: #0d6efd;
+    color: #ffffff;
+    cursor: pointer;
+    transition: background-color 0.3s ease;
+}
+
+    .google-login-btn:hover {
+        background-color: #1891c6;
+    }
+
+    .google-login-btn img {
+        margin-right: 20px;
+        height: 50px;
+    }
+
+.login-box {
+    background: white;
+    padding: 40px;
+    border-radius: 10px;
+    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.2);
+    text-align: center;
+    width: 500px;
+}
+
+    .logo_img {
+        width: 100px;
+        margin-bottom: 20px;
+    }
+
+    .login-box .form-group {
+        text-align: left;
+    }
+
+.input-group-append .fa {
+    cursor: pointer;
+}
+
+.toggle-password {
+    cursor: pointer;
+}
+
+.clear-password {
+    cursor: pointer;
+}
+
+.btn-login {
+    width: 100%;
+    padding: 10px;
+    background-color: #2577e7;
+    color: #000;
+    font-weight: 500;
+    border: none;
+    border-radius: 20px;
+    font-size: 16px;
+    margin-top: 20px;
+}
+
+.login-box input {
+    border: 3px solid #2577e7;
+}
+
+</style>
+<div class="login-box">
+    <img src="~/img/logo.png" class="logo_img" alt="Logo">
+    <h2>Inicia sesión</h2>
+ <form asp-controller="Login" asp-action="Login"  method="post">
+    <div class="form-group">
+        <label for="correo">Correo</label>
+        <input type="email" class="form-control" id="correo" name="correo" required>
+    </div>
+
+    <div class="form-group">
+        <label for="contrasena">Contraseña</label>
+        <div class="input-group">
+            <input type="password" class="form-control" id="contrasena" name="contrasena" required>
+            <span class="password-icon toggle-password" id="togglePassword" onclick="togglePasswordVisibility()">
+                <i class="fas fa-eye"></i>
+            </span>
+        </div>
+
+    </div>
+
+    <button class="btn-login" type="submit">INICIAR SESIÓN</button>
+ </form>
+</div>
+
+<script>
+    function togglePasswordVisibility() {
+        var passwordInput = document.getElementById('contrasena');
+        var passwordIcon = document.querySelector('.toggle-password i');
+        if (passwordInput.type === 'password') {
+            passwordInput.type = 'text';
+            passwordIcon.classList.remove('fa-eye');
+            passwordIcon.classList.add('fa-eye-slash');
+        } else {
+            passwordInput.type = 'password';
+            passwordIcon.classList.remove('fa-eye-slash');
+            passwordIcon.classList.add('fa-eye');
+        }
+    }
+
+    function clearPassword() {
+        document.getElementById('contrasena').value = '';
+    }
+</script>
+
+
