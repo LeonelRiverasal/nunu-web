@@ -1,6 +1,6 @@
-namespace nunu_panel.Models
-{
-    public class ServicioProveedorModel
+namespace nunu_panel.Models;
+
+public class ServicioProveedorModel
 {
     public int id_servicio { get; set; }
     public int IdProveedor { get; set; }
@@ -39,9 +39,11 @@ public class ProveedorHpModel
 
 public class CategoriaModel
 {
-    public int IdCategoria { get; set; }
-    public string Categoria { get; set; }
-    public string ImagenCategoria { get; set; }
-}
+    public int id_categoria { get; set; }
+    
+    public string categoria { get; set; }
 
+    public string? imagen_Categoria { get; set; }
+
+    public IFormFile Imagen { get; set; }
 }

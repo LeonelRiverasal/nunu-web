@@ -1,0 +1,107 @@
+﻿@model CategoriaModel
+
+@{
+    Layout = "~/Views/Shared/_Layout.cshtml";
+    ViewData["Title"] = "Editar categoría";
+}
+
+<div class="container">
+    <a asp-controller="Categorias" asp-action="Index" class="btn btn-link mt-1" style="color: gray;">
+        <i class="fas fa-arrow-left"></i> Volver
+    </a>
+
+    <h3 class="mt-4">Editar categoría</h3>
+
+    <div class="row mb-3">
+        <div class="col-md-12 div-nav-pages">
+            <span>Categorías <strong>></strong> Categoría @Model.id_categoria</span>
+        </div>
+    </div>
+
+    <div class="row">
+        <div class="col-6">
+            <form asp-action="Editar" method="post" enctype="multipart/form-data">
+
+                <div asp-validation-summary="All" class="text-danger"></div>
+
+                <div class="mb-3">
+                    <label class="form-label">Nombre de la categoría</label>
+                    <input asp-for="categoria" type="text" class="form-control" placeholder="Anterior: @Model.categoria" required>
+                    <span asp-validation-for="categoria" class="text-danger"></span>
+                </div>
+                <div class="mb-3">
+                    <img id="imagePreview" alt="" width="300" src="@Model.imagen_Categoria" />
+                    <input asp-for="Imagen" class="form-control mt-2" width="30px" accept="image/*" onchange="previewImage(event)">
+                    <span asp-validation-for="Imagen" class="text-danger"></span>
+                </div>
+
+                <div class="d-flex justify-content-between mt-2">
+                    <button type="submit" class="btn btn-success">
+                        <i class="fas fa-save"></i> Guardar
+                    </button>
+                </div>
+            </form>
+        </div>
+    </div>
+</div>
+
+<script>
+    function previewImage(event) {
+        const reader = new FileReader();
+        reader.onload = function () {
+            const output = document.getElementById('imagePreview');
+            output.src = reader.result;
+        };
+        reader.readAsDataURL(event.target.files[0]);
+    }
+</script>
+<script>
+    /*window.onload = function() {
+        console.log('Loading...');
+
+        const img = new Image();
+        img.onload = imagePreviewOnLoad
+        img.src = imagePreview.src
+        //img.crossOrigin = "Anonymous"
+    };
+
+    function imagePreviewOnLoad() {
+        console.log('Loading image...');
+
+        const canvas = document.createElement('canvas');
+        const ctx = canvas.getContext('2d');
+
+        // Ajustar el tamaño del canvas al tamaño de la imagen
+        canvas.width = imagePreview.width;
+        canvas.height = imagePreview.height;
+
+        // Dibujar la imagen en el canvas
+        ctx.drawImage(imagePreview, 0, 0);
+
+        canvas.toBlob((blob) => {
+            // Get file name.
+            const regex = /.*(\S+\.\S+)$/g;
+            const result = regex.exec(imagePreview.src);
+            const filename = result[1] ?? 'image.jpg';
+
+            console.log('Nombre de archivo de la imagen: ', filename);
+
+            // Create a new File from the Blob
+            const file = new File([blob], filename, { type: blob.type });
+
+            // Create a DataTransfer object to simulate a user selecting a file
+            const dataTransfer = new DataTransfer();
+            dataTransfer.items.add(file);
+
+            // Set the file input's files to the new file
+            fileInput.files = dataTransfer.files;
+
+            console.log("File set successfully");
+        });
+    }*/
+</script>
+
+<script src="https://cdn.jsdelivr.net/npm/@@popperjs/core@2.11.6/dist/umd/popper.min.js"></script>
+<script src="https://cdn.jsdelivr.net/npm/bootstrap@5.1.0/dist/js/bootstrap.min.js"></script>
+<!-- Scripts de Bootstrap y Popper.js -->
+<script src="https://cdn.jsdelivr.net/npm/bootstrap@5.1.0/dist/js/bootstrap.bundle.min.js"></script>

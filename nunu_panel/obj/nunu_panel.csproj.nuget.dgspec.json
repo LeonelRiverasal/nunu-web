@@ -1,24 +1,20 @@
 {
   "format": 1,
   "restore": {
-    "C:\\Users\\choco\\Source\\Repos\\nunu-web\\nunu_panel\\nunu_panel.csproj": {}
+    "C:\\Users\\Setai\\Documents\\Work\\nunu-web-main\\nunu_panel\\nunu_panel.csproj": {}
   },
   "projects": {
-    "C:\\Users\\choco\\Source\\Repos\\nunu-web\\nunu_panel\\nunu_panel.csproj": {
+    "C:\\Users\\Setai\\Documents\\Work\\nunu-web-main\\nunu_panel\\nunu_panel.csproj": {
       "version": "1.0.0",
       "restore": {
-        "projectUniqueName": "C:\\Users\\choco\\Source\\Repos\\nunu-web\\nunu_panel\\nunu_panel.csproj",
+        "projectUniqueName": "C:\\Users\\Setai\\Documents\\Work\\nunu-web-main\\nunu_panel\\nunu_panel.csproj",
         "projectName": "nunu_panel",
-        "projectPath": "C:\\Users\\choco\\Source\\Repos\\nunu-web\\nunu_panel\\nunu_panel.csproj",
-        "packagesPath": "C:\\Users\\choco\\.nuget\\packages\\",
-        "outputPath": "C:\\Users\\choco\\Source\\Repos\\nunu-web\\nunu_panel\\obj\\",
+        "projectPath": "C:\\Users\\Setai\\Documents\\Work\\nunu-web-main\\nunu_panel\\nunu_panel.csproj",
+        "packagesPath": "C:\\Users\\Setai\\.nuget\\packages\\",
+        "outputPath": "C:\\Users\\Setai\\Documents\\Work\\nunu-web-main\\nunu_panel\\obj\\",
         "projectStyle": "PackageReference",
-        "fallbackFolders": [
-          "C:\\Program Files (x86)\\Microsoft Visual Studio\\Shared\\NuGetPackages"
-        ],
         "configFilePaths": [
-          "C:\\Users\\choco\\AppData\\Roaming\\NuGet\\NuGet.Config",
-          "C:\\Program Files (x86)\\NuGet\\Config\\Microsoft.VisualStudio.FallbackLocation.config",
+          "C:\\Users\\Setai\\AppData\\Roaming\\NuGet\\NuGet.Config",
           "C:\\Program Files (x86)\\NuGet\\Config\\Microsoft.VisualStudio.Offline.config"
         ],
         "originalTargetFrameworks": [
@@ -26,6 +22,7 @@
         ],
         "sources": {
           "C:\\Program Files (x86)\\Microsoft SDKs\\NuGetPackages\\": {},
+          "C:\\Program Files\\dotnet\\library-packs": {},
           "https://api.nuget.org/v3/index.json": {}
         },
         "frameworks": {
@@ -38,6 +35,11 @@
           "warnAsError": [
             "NU1605"
           ]
+        },
+        "restoreAuditProperties": {
+          "enableAudit": "true",
+          "auditLevel": "low",
+          "auditMode": "direct"
         }
       },
       "frameworks": {
@@ -72,7 +74,7 @@
               "privateAssets": "all"
             }
           },
-          "runtimeIdentifierGraphPath": "C:\\Program Files\\dotnet\\sdk\\8.0.100\\RuntimeIdentifierGraph.json"
+          "runtimeIdentifierGraphPath": "C:\\Program Files\\dotnet\\sdk\\8.0.400\\RuntimeIdentifierGraph.json"
         }
       }
     }

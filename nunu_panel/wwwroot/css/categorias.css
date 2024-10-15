@@ -1,0 +1,6 @@
+﻿.squircle-icon {
+    width: 80px;
+    aspect-ratio: 1 / 1;
+    object-fit: cover;
+    border-radius: 25% / 15%; /* Genera el efecto squircle */
+}

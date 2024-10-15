@@ -1,11 +1,22 @@
 {
   "version": 2,
-  "dgSpecHash": "PsWJyn7vVen4glhUXbJl4u0T6khy0+zpQaSHItIjQimttyWyG1E+eAKqYg53c4pBqijdiQweHe9l459VzTIYYg==",
+  "dgSpecHash": "8lyVz9aniVE=",
   "success": true,
-  "projectFilePath": "C:\\Users\\choco\\Source\\Repos\\nunu-web\\nunu_panel\\nunu_panel.csproj",
+  "projectFilePath": "C:\\Users\\Setai\\Documents\\Work\\nunu-web-main\\nunu_panel\\nunu_panel.csproj",
   "expectedPackageFiles": [
-    "C:\\Users\\choco\\.nuget\\packages\\newtonsoft.json\\13.0.3\\newtonsoft.json.13.0.3.nupkg.sha512",
-    "C:\\Users\\choco\\.nuget\\packages\\restsharp\\111.4.1\\restsharp.111.4.1.nupkg.sha512"
+    "C:\\Users\\Setai\\.nuget\\packages\\newtonsoft.json\\13.0.3\\newtonsoft.json.13.0.3.nupkg.sha512",
+    "C:\\Users\\Setai\\.nuget\\packages\\restsharp\\111.4.1\\restsharp.111.4.1.nupkg.sha512"
   ],
-  "logs": []
+  "logs": [
+    {
+      "code": "NU1902",
+      "level": "Warning",
+      "warningLevel": 1,
+      "message": "Package 'RestSharp' 111.4.1 has a known moderate severity vulnerability, https://github.com/advisories/GHSA-4rr6-2v9v-wcpc",
+      "libraryId": "RestSharp",
+      "targetGraphs": [
+        "net6.0"
+      ]
+    }
+  ]
 }

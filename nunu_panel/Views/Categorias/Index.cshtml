@@ -1,0 +1,146 @@
+﻿@model List<CategoriaModel>
+
+@{
+    ViewData["Title"] = "Categorías de servicios";
+    Layout = "~/Views/Shared/_Layout.cshtml";
+}
+
+@section Styles {
+    <link rel="stylesheet" href="/css/categorias.css" type="text/css">
+}
+
+<div class="container">
+<div class="row mb-3">
+    <div class="col">
+        <form asp-action="Index">
+            <div class="groupSearch">
+                <svg class="iconSearch" aria-hidden="true" viewBox="0 0 24 24"><g><path d="M21.53 20.47l-3.66-3.66C19.195 15.24 20 13.214 20 11c0-4.97-4.03-9-9-9s-9 4.03-9 9 4.03 9 9 9c2.215 0 4.24-.804 5.808-2.13l3.66 3.66c.147.146.34.22.53.22s.385-.073.53-.22c.295-.293.295-.767.002-1.06zM3.5 11c0-4.135 3.365-7.5 7.5-7.5s7.5 3.365 7.5 7.5-3.365 7.5-7.5 7.5-7.5-3.365-7.5-7.5z"></path></g></svg>
+                <input value="" id="searchInput" name="searchTerm" placeholder="Busca en categorías" type="search" class="inputSearch">
+            </div>
+        </form>
+    </div>
+</div>
+
+<div class="row">
+    <div class="d-flex justify-content-between align-items-center">
+        <h4 class="title-form">Categorías</h4>
+    </div>
+</div>
+
+<div class="row">
+    <div class="breadcrumb">
+        <a href="/Categorias" class="breadcrumb-item active">Categorías</a> > Todas
+    </div>
+    Mostrando @Model.Count
+</div>
+
+<div class="col-md-12 mt-3">
+
+<a class="btn btn-primary" asp-action="Nueva">
+    Nueva categoría
+</a>
+
+<table class="table">
+    <colgroup>
+        <col style="width:60px"/>
+        <col style="width:auto"/>
+        <col style="width:50px"/>
+    </colgroup>
+    <thead>
+        <tr>
+            <th scope="col" class="">Imagen</th>
+            <th scope="col" class="">Nombre</th>
+            <th scope="col" class="textTableCenter"></th>
+        </tr>
+    </thead>
+    <tbody>
+        @foreach (var categoria in Model)
+        {
+            <tr>
+                <td class="td-first">
+                    <img class="squircle-icon" src="@categoria.imagen_Categoria">
+                </td>
+                <td class="td-middle">@categoria.categoria</td>
+                <td class="td-end">                            
+                    <div class="dropdown">
+                        <button class="btn dropdown-toggle text-dark" type="button" id="dropdownMenuButton1" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
+                            <i class="fas fa-ellipsis-v"></i>
+                        </button>
+                        <div class="dropdown-menu" aria-labelledby="dropdownMenuButton1">
+                            @*<a class="dropdown-item"
+                                asp-action="Editar"
+                                asp-route-id="@categoria.id_categoria">
+                                Editar
+                                </a>*@
+                            <a class="dropdown-item"
+                                data-bs-toggle="modal"
+                                data-bs-target="#deleteCatModal"
+                                onclick="setDeleteModalId(@categoria.id_categoria)">
+                                Eliminar
+                            </a>
+                        </div>
+                    </div>
+                </td>
+            </tr>
+        }
+    </tbody>
+</table>
+      
+    </div>
+</div>
+
+<div class="modal fade" id="deleteCatModal" tabindex="-1" aria-labelledby="deleteCatModalLabel" aria-hidden="true">
+  <div class="modal-dialog">
+    <div class="modal-content">
+    <form asp-action="Eliminar">
+      <div class="modal-header">
+        <h5 class="modal-title" id="deleteCatModalLabel">Eliminar Categoría</h5>
+        <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+      </div>
+      <div class="modal-body">
+        ¿Estás seguro que deseas eliminar esta categoría?
+        <input type="hidden" name="id" id="deleteCatModalId">
+      </div>
+      <div class="modal-footer">
+        <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Cancelar</button>
+        <button type="submit" class="btn btn-danger">Eliminar</button>
+      </div>
+    </form>
+    </div>
+  </div>
+</div>
+
+<script src="https://code.jquery.com/jquery-3.5.1.min.js"></script>
+<script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.16.0/umd/popper.min.js"></script>
+<script src="https://maxcdn.bootstrapcdn.com/bootstrap/4.5.2/js/bootstrap.min.js"></script>
+<script>
+    document.addEventListener('DOMContentLoaded', function () {
+        const searchInput = document.getElementById('searchInput');
+        const table = document.querySelector('.table tbody');
+
+        searchInput.addEventListener('keyup', function () {
+            const searchTerm = searchInput.value.toLowerCase();
+            const rows = table.querySelectorAll('tr');
+
+            rows.forEach(function (row) {
+                const idCell = row.querySelector('td:nth-child(1)');
+                const nameCell = row.querySelector('td:nth-child(2)');
+
+                const idText = idCell.textContent.toLowerCase();
+                const nameText = nameCell.textContent.toLowerCase();
+
+                if (idText.includes(searchTerm) || nameText.includes(searchTerm)) {
+                    row.style.display = '';
+                } else {
+                    row.style.display = 'none';
+                }
+            });
+        });
+    });
+</script>
+
+<script>
+    function setDeleteModalId(id) {
+        deleteCatModalId.value = id
+    }
+</script>
