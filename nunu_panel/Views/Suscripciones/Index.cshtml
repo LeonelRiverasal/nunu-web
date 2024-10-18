@@ -4,32 +4,39 @@
     Layout = "~/Views/Shared/_Layout.cshtml";
 }
 <div class="container">
-<div class="row mb-3">
-    <div class="col">
-        <form asp-controller="Pagos" asp-action="Index">
-            <div class="groupSearch">
-                <svg class="iconSearch" aria-hidden="true" viewBox="0 0 24 24"><g><path d="M21.53 20.47l-3.66-3.66C19.195 15.24 20 13.214 20 11c0-4.97-4.03-9-9-9s-9 4.03-9 9 4.03 9 9 9c2.215 0 4.24-.804 5.808-2.13l3.66 3.66c.147.146.34.22.53.22s.385-.073.53-.22c.295-.293.295-.767.002-1.06zM3.5 11c0-4.135 3.365-7.5 7.5-7.5s7.5 3.365 7.5 7.5-3.365 7.5-7.5 7.5-7.5-3.365-7.5-7.5z"></path></g></svg>
-                <input value="" id="searchInput" name="searchTerm" placeholder="Busca por proveedor/ID" type="search" class="inputSearch">
-            </div>
-        </form>
+    <div class="row mb-3">
+        <div class="col">
+            <form asp-controller="Pagos" asp-action="Index">
+                <div class="groupSearch">
+                    <svg class="iconSearch" aria-hidden="true" viewBox="0 0 24 24">
+                        <g>
+                            <path
+                                d="M21.53 20.47l-3.66-3.66C19.195 15.24 20 13.214 20 11c0-4.97-4.03-9-9-9s-9 4.03-9 9 4.03 9 9 9c2.215 0 4.24-.804 5.808-2.13l3.66 3.66c.147.146.34.22.53.22s.385-.073.53-.22c.295-.293.295-.767.002-1.06zM3.5 11c0-4.135 3.365-7.5 7.5-7.5s7.5 3.365 7.5 7.5-3.365 7.5-7.5 7.5-7.5-3.365-7.5-7.5z">
+                            </path>
+                        </g>
+                    </svg>
+                    <input value="" id="searchInput" name="searchTerm" placeholder="Busca por proveedor/ID"
+                        type="search" class="inputSearch">
+                </div>
+            </form>
+        </div>
     </div>
-</div>
-<div class="row">
-    <div class="d-flex justify-content-between align-items-center">
-        <h4 class="title-form">Suscripciones</h4>
-       
-    </div>
-</div>
+    <div class="row">
+        <div class="d-flex justify-content-between align-items-center">
+            <h4 class="title-form">Suscripciones</h4>
 
-<div class="row">
-    <div class="breadcrumb">
-        <a href="/Pagos" class="breadcrumb-item active">Suscripciones</a> >
+        </div>
     </div>
-    Mostrando @Model.Count
-</div>
 
-<div class="col-md-12 mt-3">
-       <table class="table">
+    <div class="row">
+        <div class="breadcrumb">
+            <a href="/Pagos" class="breadcrumb-item active">Suscripciones</a> >
+        </div>
+        Mostrando @Model.Count
+    </div>
+
+    <div class="col-md-12 mt-3">
+        <table class="table">
             <thead>
                 <tr>
                     <th scope="col" class="">ID</th>
@@ -43,52 +50,55 @@
                     <th scope="col" class=""></th>
                 </tr>
             </thead>
-            <tbody> 
-                 @foreach (var proveedor in Model)
+            <tbody>
+                @foreach (var proveedor in Model)
                 {
-                     @if (proveedor.suscripcion)
+                    @if (proveedor.suscripcion)
                     {
                         <tr class="provider-row @(proveedor.verificado ? "verified" : "not-verified")">
-                        <td class="td-first">@proveedor.id_proveedor</td>
-                        @if (proveedor.verificado)
-                        {
-                            <td class="td-middle"><span class="badge-custom aprobado" data-bs-toggle="modal" data-bs-target="#leftModal" style="cursor:pointer;">Verificado</span></td>
-                        }
-                        else
-                        {
-                            <td class="td-middle"><span class="badge-custom en-camino" data-bs-toggle="modal" data-bs-target="#leftModal" style="cursor:pointer;">Revisar</span></td>
-                        }
-                        <td class="td-middle">@proveedor.nombre_razon_social</td>
-                        <td class="td-middle">
-                            <a href="#" data-bs-toggle="modal" data-bs-target="#filterModal"
-                            data-id="@proveedor.id_proveedor"
-                            data-antecedentes="@proveedor.antecedentes_penales"
-                            data-ine-frente="@proveedor.ine_frente"
-                            data-ine-reverso="@proveedor.ine_reverso"
-                            data-curriculum="@proveedor.curriculum"
-                            data-comprobante-domicilio="@proveedor.comprobante_domicilio">
+                            <td class="td-first">@proveedor.id_proveedor</td>
+                            @if (proveedor.verificado)
+                            {
+                                <td class="td-middle"><span class="badge-custom aprobado" data-bs-toggle="modal"
+                                        data-bs-target="#leftModal" style="cursor:pointer;">Verificado</span></td>
+                            }
+                            else
+                            {
+                                <td class="td-middle"><span class="badge-custom en-camino" data-bs-toggle="modal"
+                                        data-bs-target="#leftModal" style="cursor:pointer;">Revisar</span></td>
+                            }
+                            <td class="td-middle">@proveedor.nombre_razon_social</td>
+                            <td class="td-middle">
+                                <a href="#" data-bs-toggle="modal" data-bs-target="#filterModal"
+                                data-isApproved="@proveedor.verificado"
+                                data-id="@proveedor.id_proveedor" data-antecedentes="@proveedor.antecedentes_penales"
+                                data-ine-frente="@proveedor.ine_frente" data-ine-reverso="@proveedor.ine_reverso"
+                                data-curriculum="@proveedor.curriculum"
+                                data-comprobante-domicilio="@proveedor.comprobante_domicilio">
                                 Ver documentos
                             </a>
-                        </td>
-                        <td class="td-middle">@proveedor.telefono</td>
-                        <td class="td-middle">@proveedor.fecha_registro.ToString("dd/MM/yyyy")</td>
-                        <td class="td-end">
-                            <div class="dropdown">
-                                <button class="btn dropdown-toggle text-dark" type="button" id="dropdownMenuButton1" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
-                                    <i class="fas fa-ellipsis-v"></i>
-                                </button>
-                                <div class="dropdown-menu" aria-labelledby="dropdownMenuButton1">
-                                     <a class="dropdown-item" data-bs-toggle="modal" data-bs-target="#deleteUserModal" data-id="@proveedor.id_proveedor">Quitar Suscripción</a> 
+                            </td>
+                            <td class="td-middle">@proveedor.telefono</td>
+                            <td class="td-middle">@proveedor.fecha_registro.ToString("dd/MM/yyyy")</td>
+                            <td class="td-end">
+                                <div class="dropdown">
+                                    <button class="btn dropdown-toggle text-dark" type="button" id="dropdownMenuButton1"
+                                        data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
+                                        <i class="fas fa-ellipsis-v"></i>
+                                    </button>
+                                    <div class="dropdown-menu" aria-labelledby="dropdownMenuButton1">
+                                        <a class="dropdown-item" data-bs-toggle="modal" data-bs-target="#deleteUserModal"
+                                            data-id="@proveedor.id_proveedor">Quitar Suscripción</a>
+                                    </div>
                                 </div>
-                            </div>
-                        </td>
-                    </tr>
+                            </td>
+                        </tr>
                     }
                 }
-               
-               
 
-            
+
+
+
             </tbody>
         </table>
     </div>
@@ -96,97 +106,112 @@
 
 
 <div class="modal fade" id="deleteUserModal" tabindex="-1" aria-labelledby="deleteUserModalLabel" aria-hidden="true">
-  <div class="modal-dialog">
-    <div class="modal-content">
-      <div class="modal-header">
-        <h5 class="modal-title" id="deleteUserModalLabel">Quitar Suscripción</h5>
-        <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
-      </div>
-      <div class="modal-body">
-        ¿Estás seguro que deseas quitar la Suscripción a este proveedor?
-      </div>
-      <div class="modal-footer">
-        <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Cancelar</button>
-        <button type="button" class="btn btn-danger" id="confirmDeleteButton">Quitar Suscripción</button>
-      </div>
+    <div class="modal-dialog">
+        <div class="modal-content">
+            <div class="modal-header">
+                <h5 class="modal-title" id="deleteUserModalLabel">Quitar Suscripción</h5>
+                <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+            </div>
+            <div class="modal-body">
+                ¿Estás seguro que deseas quitar la Suscripción a este proveedor?
+            </div>
+            <div class="modal-footer">
+                <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Cancelar</button>
+                <button type="button" class="btn btn-danger" id="confirmDeleteButton">Quitar Suscripción</button>
+            </div>
+        </div>
     </div>
-  </div>
 </div>
 
 
 
-<div class="modal fade modal-right" id="filterModal" tabindex="-1" aria-labelledby="filterModalLabel" aria-hidden="true">
+<div class="modal fade modal-right" id="filterModal" tabindex="-1" aria-labelledby="filterModalLabel"
+    aria-hidden="true">
     <div class="modal-dialog">
         <div class="modal-content">
             <div class="modal-header">
-                <h5 class="modal-title" id="rightModalLabel">Documentos</h5>                
+                <h5 class="modal-title" id="rightModalLabel">Documentos</h5>
                 <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
             </div>
             <div class="modal-body">
                 <form>
+                    <input type="hidden" id="idproveedor" placeholder="idder" />
+                    @* <div class="form-group">
+                    <label>Antecedentes penales:</label>
+                    <div class="input-group mb-3">
+                    <input type="text" class="form-control" id="antecedentes" placeholder="ANTECEDENTES">
+                    <div class="input-group-append">
+                    <button class="btn btn-outline-secondary view-document-button" type="button"
+                    data-input-id="antecedentes">VER</button>
+                    </div>
+                    </div>
+                    </div> *@
                     <div class="form-group">
+                        <label>Curriculum</label>
                         <div class="input-group mb-3">
-                            <input type="text" class="form-control" placeholder="Ingresar antecedentes no penales">
+                            <input type="text" class="form-control" id="curriculum" placeholder="Curriculum">
                             <div class="input-group-append">
-                                <button class="btn btn-outline-secondary" type="button">VER</button>
+                                <button class="btn btn-outline-secondary view-document-button" type="button"
+                                    data-input-id="curriculum">VER</button>
                             </div>
                         </div>
                     </div>
                     <div class="form-group">
+                        <label>INE Frente:</label>
                         <div class="input-group mb-3">
-                            <input type="text" class="form-control" placeholder="Curriculum">
+                            <input type="text" class="form-control" id="ineFrente" placeholder="INE FRENTE">
                             <div class="input-group-append">
-                                <button class="btn btn-outline-secondary" type="button">VER</button>
+                                <button class="btn btn-outline-secondary view-document-button" type="button"
+                                    data-input-id="ineFrente">VER</button>
                             </div>
                         </div>
                     </div>
                     <div class="form-group">
+                        <label>INE Reverso:</label>
                         <div class="input-group mb-3">
-                            <input type="text" class="form-control" placeholder="INE FRENTE">
+                            <input type="text" class="form-control" id="ineReverso" placeholder="INE DETRAS">
                             <div class="input-group-append">
-                                <button class="btn btn-outline-secondary" type="button">VER</button>
+                                <button class="btn btn-outline-secondary view-document-button" type="button"
+                                    data-input-id="ineReverso">VER</button>
                             </div>
                         </div>
                     </div>
                     <div class="form-group">
+                        <label>Comprobante de domicilio:</label>
                         <div class="input-group mb-3">
-                            <input type="text" class="form-control" placeholder="INE DETRAS">
+                            <input type="text" class="form-control" id="comprobanteDomicilio"
+                                placeholder="Comprobante de domicilio">
                             <div class="input-group-append">
-                                <button class="btn btn-outline-secondary" type="button">VER</button>
-                            </div>
-                        </div>
-                    </div>
-                    <div class="form-group">
-                        <div class="input-group mb-3">
-                            <input type="text" class="form-control" placeholder="Comprobante de domicilio">
-                            <div class="input-group-append">
-                                <button class="btn btn-outline-secondary" type="button">VER</button>
+                                <button class="btn btn-outline-secondary view-document-button" type="button"
+                                    data-input-id="comprobanteDomicilio">VER</button>
                             </div>
                         </div>
                     </div>
                 </form>
                 <hr>
-                <button class="btn btn-primary w-100" data-bs-dismiss="modal">Cerrar</button>
+                <button class="btn btn-success w-100" data-id="" data-bs-toggle="modalDocumentos"
+                    data-bs-dismiss="modal" id="aprovarProveedor">Aprobar</button>
+                <button class="btn btn-primary w-100 mt-2" data-bs-dismiss="modal">Cerrar</button>
             </div>
         </div>
     </div>
 </div>
 <script src="https://code.jquery.com/jquery-3.5.1.min.js"></script>
-  <script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.16.0/umd/popper.min.js"></script>
-  <script src="https://maxcdn.bootstrapcdn.com/bootstrap/4.5.2/js/bootstrap.min.js"></script>
+<script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.16.0/umd/popper.min.js"></script>
+<script src="https://maxcdn.bootstrapcdn.com/bootstrap/4.5.2/js/bootstrap.min.js"></script>
 
- <script>
+<script>
 
 
-var filterModal = document.getElementById('filterModal');
+    var filterModal = document.getElementById('filterModal');
     filterModal.addEventListener('show.bs.modal', function (event) {
-        var button = event.relatedTarget; 
+        var button = event.relatedTarget;
         var id = button.getAttribute('data-id');
         var antecedentes = button.getAttribute('data-antecedentes');
         var ineFrente = button.getAttribute('data-ine-frente');
         var ineReverso = button.getAttribute('data-ine-reverso');
         var curriculum = button.getAttribute('data-curriculum');
-        var comprobanteDomicilio = button.getAttribute('data-comprobante-domicilio');        
+        var comprobanteDomicilio = button.getAttribute('data-comprobante-domicilio');
         filterModal.querySelector('input[placeholder="idder"]').value = id;
         filterModal.querySelector('input[placeholder="ANTECEDENTES"]').value = antecedentes;
         filterModal.querySelector('input[placeholder="INE FRENTE"]').value = ineFrente;
@@ -196,28 +221,28 @@ var filterModal = document.getElementById('filterModal');
     });
 
 
-     const searchInput = document.getElementById('searchInput');
-        const table = document.querySelector('.table tbody');
+    const searchInput = document.getElementById('searchInput');
+    const table = document.querySelector('.table tbody');
 
-        searchInput.addEventListener('keyup', function () {
-            const searchTerm = searchInput.value.toLowerCase();
-            const rows = table.querySelectorAll('tr');
+    searchInput.addEventListener('keyup', function () {
+        const searchTerm = searchInput.value.toLowerCase();
+        const rows = table.querySelectorAll('tr');
 
-            rows.forEach(function (row) {
-                const idCell = row.querySelector('td:nth-child(1)');
-                const nameCell = row.querySelector('td:nth-child(3)');
+        rows.forEach(function (row) {
+            const idCell = row.querySelector('td:nth-child(1)');
+            const nameCell = row.querySelector('td:nth-child(3)');
 
-                const idText = idCell.textContent.toLowerCase();
-                const nameText = nameCell.textContent.toLowerCase();
+            const idText = idCell.textContent.toLowerCase();
+            const nameText = nameCell.textContent.toLowerCase();
 
-                if (idText.includes(searchTerm) || nameText.includes(searchTerm)) {
-                    row.style.display = '';
-                } else {
-                    row.style.display = 'none';
-                }
-            });
+            if (idText.includes(searchTerm) || nameText.includes(searchTerm)) {
+                row.style.display = '';
+            } else {
+                row.style.display = 'none';
+            }
         });
-        document.querySelectorAll('.view-document-button').forEach(function(button) {
+    });
+    document.querySelectorAll('.view-document-button').forEach(function (button) {
         button.addEventListener('click', function () {
             var inputId = this.getAttribute('data-input-id');
             var inputValue = document.getElementById(inputId).value;
@@ -230,70 +255,112 @@ var filterModal = document.getElementById('filterModal');
     });
 
     const deleteUserModal = new bootstrap.Modal(document.getElementById('deleteUserModal'));
-        const confirmDeleteButton = document.getElementById('confirmDeleteButton');
-        let userIdToDelete;
+    const confirmDeleteButton = document.getElementById('confirmDeleteButton');
+    let userIdToDelete;
 
-        document.querySelectorAll('[data-bs-toggle="modal"]').forEach(function (button) {
-            button.addEventListener('click', function () {
-                userIdToDelete = this.getAttribute('data-id');
-                console.log(userIdToDelete);
-            });
+    document.querySelectorAll('[data-bs-toggle="modal"]').forEach(function (button) {
+        button.addEventListener('click', function () {
+            userIdToDelete = this.getAttribute('data-id');
+            console.log(userIdToDelete);
         });
+    });
 
-        confirmDeleteButton.addEventListener('click', function () {            
-            fetch(`/Suscripciones/QuitarSub?idProveedor=${userIdToDelete}`, {
-                method: 'PUT',
-                headers: {
-                    'Content-Type': 'application/json',
-                    'X-CSRF-TOKEN': document.querySelector('input[name="__RequestVerificationToken"]').value
-                }
-            })
+    confirmDeleteButton.addEventListener('click', function () {
+        fetch(`/Suscripciones/QuitarSub?idProveedor=${userIdToDelete}`, {
+            method: 'PUT',
+            headers: {
+                'Content-Type': 'application/json',
+                'X-CSRF-TOKEN': document.querySelector('input[name="__RequestVerificationToken"]').value
+            }
+        })
             .then(response => response.json())
             .then(data => {
-                if (data.success) {
+                if (data == true) {
                     document.querySelector(`a[data-id="${userIdToDelete}"]`).closest('tr').remove();
                     deleteUserModal.hide();
-                     const modalMessage = document.getElementById('modalMessage');
-            $('#successModal').modal('show');
-            modalMessage.innerText= data.message;
+                    const modalMessage = document.getElementById('modalMessage');
+                    Swal.fire({
+                        icon: 'success',
+                        title: 'Suscripción Eliminada',
+                        text: 'La suscripción ha sido eliminada exitosamente.',
+                        showConfirmButton: true,
+                        timer: 3000,
+                        timerProgressBar: true,
+                        didClose: () => {
+                            window.location.reload();
+                        }
+                    })
                 } else {
-                 //   alert(data.message);
+                   Swal.fire({
+                        icon: 'error',
+                        title: 'Error',
+                        text: data.message,
+                        showConfirmButton: true,
+                        timer: 3000,
+                        timerProgressBar: true
+                    })
                 }
             })
             .catch(error => console.error('Error:', error));
+    });
+    document.querySelectorAll('[data-bs-toggle="modal"]').forEach(function (button) {
+        button.addEventListener('click', function () {
+            userIdToDelete = this.getAttribute('data-id');
+            console.log(userIdToDelete);
         });
-        document.querySelectorAll('[data-bs-toggle="modal"]').forEach(function (button) {
-            button.addEventListener('click', function () {
-                userIdToDelete = this.getAttribute('data-id');
-                console.log(userIdToDelete);
-            });
-        });
-        const filtroModal = new bootstrap.Modal(document.getElementById('filterModal'));
-        document.getElementById('aprovarProveedor').addEventListener('click', function () {
-            var idderpro = document.getElementById("idproveedor").value;
-            fetch(`/Proveedores/AprovarProveedor?idProveedor=${idderpro}`, {
-                method: 'POST',
-                headers: {
-                    'Content-Type': 'application/json',
-                    'X-CSRF-TOKEN': document.querySelector('input[name="__RequestVerificationToken"]').value
-                }
-            })
+    });
+    const filtroModal = new bootstrap.Modal(document.getElementById('filterModal'));
+    document.getElementById('aprovarProveedor').addEventListener('click', function () {
+        var idderpro = document.getElementById("idproveedor").value;
+        fetch(`/Proveedores/AprovarProveedor?idProveedor=${idderpro}`, {
+            method: 'POST',
+            headers: {
+                'Content-Type': 'application/json',
+                'X-CSRF-TOKEN': document.querySelector('input[name="__RequestVerificationToken"]').value
+            }
+        })
             .then(response => response.json())
             .then(data => {
-                if (data) {                    
+                if (data) {
                     filtroModal.hide();
                     //alert(data.message);
                     const modalMessage = document.getElementById('modalMessage');
-            $('#successModal').modal('show');
-            $('#deleteUserModal').modal('hide');
-            modalMessage.innerText= data.message;
+                    $('#successModal').modal('show');
+                    $('#deleteUserModal').modal('hide');
+                    modalMessage.innerText = data.message;
                 } else {
                     $('#successModal').modal('show');
                     $('#deleteUserModal').modal('hide');
-                    
+
                     //alert(data.message);
                 }
             })
             .catch(error => console.error('Error:', error));
-        });
-  </script>
+    });
+</script>
+
+<script>
+    var filterModal = document.getElementById('filterModal');
+    filterModal.addEventListener('show.bs.modal', function (event) {
+        var button = event.relatedTarget;
+        var id = button.getAttribute('data-id');
+        var antecedentes = button.getAttribute('data-antecedentes');
+        var ineFrente = button.getAttribute('data-ine-frente');
+        var ineReverso = button.getAttribute('data-ine-reverso');
+        var curriculum = button.getAttribute('data-curriculum');
+        let isApproved = button.getAttribute('data-isApproved');
+        var comprobanteDomicilio = button.getAttribute('data-comprobante-domicilio');
+        filterModal.querySelector('input[placeholder="idder"]').value = id;
+        filterModal.querySelector('input[placeholder="INE FRENTE"]').value = ineFrente;
+        filterModal.querySelector('input[placeholder="INE DETRAS"]').value = ineReverso;
+        filterModal.querySelector('input[placeholder="Curriculum"]').value = curriculum;
+        filterModal.querySelector('input[placeholder="Comprobante de domicilio"]').value = comprobanteDomicilio;
+        aprovarProveedor.textContent = isApproved === "True" ? "Ya Aprobado" : "Aprobar";
+        if (isApproved === "True") {
+            aprovarProveedor.disabled = true;
+        } else {
+            aprovarProveedor.disabled = false;
+        }
+
+    });
+</script>

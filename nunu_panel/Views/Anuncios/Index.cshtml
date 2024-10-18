@@ -1,51 +1,69 @@
-
 @model List<nunu_panel.Models.AnuncioDetalleModel>
 
 @{
     ViewData["Title"] = "Anuncios";
     Layout = "~/Views/Shared/_Layout.cshtml";
 }
+@if (ViewBag.Error != null)
+{
+    <div class="alert alert-danger" role="alert">
+        @ViewBag.Error
+    </div>
+}
+@if (ViewBag.Success != null)
+{
+    <div class="alert alert-success" role="alert">
+        @ViewBag.Success
+    </div>
+}
 <div class="container">
-<div class="row mb-3">
-    <div class="col">
-        <form asp-controller="Anuncios" asp-action="Index">
-            
-            <div class="groupSearch">
-                <svg class="iconSearch" aria-hidden="true" viewBox="0 0 24 24"><g><path d="M21.53 20.47l-3.66-3.66C19.195 15.24 20 13.214 20 11c0-4.97-4.03-9-9-9s-9 4.03-9 9 4.03 9 9 9c2.215 0 4.24-.804 5.808-2.13l3.66 3.66c.147.146.34.22.53.22s.385-.073.53-.22c.295-.293.295-.767.002-1.06zM3.5 11c0-4.135 3.365-7.5 7.5-7.5s7.5 3.365 7.5 7.5-3.365 7.5-7.5 7.5-7.5-3.365-7.5-7.5z"></path></g></svg>
-                <input value="" id="searchInput" name="searchTerm" placeholder="Busca por anuncio/ID" type="search" class="inputSearch">
-            </div>
-        </form>
+    <div class="row mb-3">
+        <div class="col">
+            <form asp-controller="Anuncios" asp-action="Index">
+
+                <div class="groupSearch">
+                    <svg class="iconSearch" aria-hidden="true" viewBox="0 0 24 24">
+                        <g>
+                            <path
+                                d="M21.53 20.47l-3.66-3.66C19.195 15.24 20 13.214 20 11c0-4.97-4.03-9-9-9s-9 4.03-9 9 4.03 9 9 9c2.215 0 4.24-.804 5.808-2.13l3.66 3.66c.147.146.34.22.53.22s.385-.073.53-.22c.295-.293.295-.767.002-1.06zM3.5 11c0-4.135 3.365-7.5 7.5-7.5s7.5 3.365 7.5 7.5-3.365 7.5-7.5 7.5-7.5-3.365-7.5-7.5z">
+                            </path>
+                        </g>
+                    </svg>
+                    <input value="" id="searchInput" name="searchTerm" placeholder="Busca por Nombre Empresa/ID"
+                        type="search" class="inputSearch">
+                </div>
+            </form>
+        </div>
     </div>
-</div>
 
-<div class="row">
-    <div class="breadcrumb">
-        <a href="/Anuncios" class="breadcrumb-item active">Anuncios</a> >
+    <div class="row">
+        <div class="breadcrumb">
+            <a href="/Anuncios" class="breadcrumb-item active">Anuncios</a> >
+        </div>
+        Mostrando @Model.Count
     </div>
-    Mostrando @Model.Count 
-</div>
 
-<div class="col-md-12 mt-3">
-<button type="button" class="btn btn-primary" data-toggle="modal" data-target="#registroModal">
-    Registrar Anuncio
-</button>
+    <div class="col-md-12 mt-3">
+        <button type="button" class="btn btn-primary" data-toggle="modal" data-target="#registroModal">
+            Registrar Anuncio
+        </button>
 
-<table class="table">
-    <thead>
-        <tr>
-            <th scope="col" class="">ID</th>
-            <th scope="col" class="">Nombre Empresa</th>
-            <th scope="col" class="">Tipo</th>
-            <th scope="col" class="">Descripción</th>
-            <th scope="col" class="">Dirección</th>
-            <th scope="col" class="">Telefono</th>
-            <th scope="col" class="">Vigencia</th>
-            <th scope="col" class="">Imagen</th>
-            <th scope="col" class="textTableCenter"></th>
-        </tr>
-    </thead>
-    <tbody>
-        @foreach (var anuncio in Model)
+        <table class="table">
+            <thead>
+                <tr>
+                    <th scope="col" class="">ID</th>
+                    <th scope="col" class="">Nombre Empresa</th>
+                    <th scope="col" class="">Tipo</th>
+                    <th scope="col" class="">Descripción</th>
+                    <th scope="col" class="">Dirección</th>
+                    <th scope="col" class="">Telefono</th>
+                    <th scope="col" class="">Vigencia</th>
+                    <th scope="col" class="">Imagen</th>
+                    <th scope="col" class="textTableCenter"></th>
+                </tr>
+            </thead>
+            <tbody>
+                @foreach (var anuncio in Model)
                 {
                     <tr>
                         <td class="td-first">@anuncio.id_anuncio</td>
@@ -53,53 +71,58 @@
                         <td class="td-middle">@anuncio.tipo_Oferta</td>
                         <td class="td-middle">@anuncio.descripcion_oferta</td>
                         <td class="td-middle">@anuncio.direccion</td>
-                        <td class="td-middle">@anuncio.telefono</td>                                                
-                        <td class="td-middle">@anuncio.vigencia_oferta.ToString("dd/MM/yyyy")</td> 
-                        <td class="td-middle"><a href="@anuncio.Imagen_anuncio" target="_blank">Ver</a></td>   
+                        <td class="td-middle">@anuncio.telefono</td>
+                        <td class="td-middle">@anuncio.vigencia_oferta.ToString("dd/MM/yyyy")</td>
+                        <td class="td-middle"><a href="@anuncio.Imagen_anuncio" target="_blank">Ver</a></td>
                         @* <td class="td-middle">@usuario.correo</td>
-                        <td class="td-middle">-----</td>
-                        <td class="td-middle">------</td>
-                        *@
-                        <td class="td-end">                            
+                    <td class="td-middle">-----</td>
+                    <td class="td-middle">------</td>
+                    *@
+                        <td class="td-end">
                             <div class="dropdown">
-                                <button class="btn dropdown-toggle text-dark" type="button" id="dropdownMenuButton1" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
+                                <button class="btn dropdown-toggle text-dark" type="button" id="dropdownMenuButton1"
+                                    data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
                                     <i class="fas fa-ellipsis-v"></i>
                                 </button>
                                 <div class="dropdown-menu" aria-labelledby="dropdownMenuButton1">
-                                    <a class="dropdown-item" data-bs-toggle="modal" data-bs-target="#editAnuncioModal" data-id="@anuncio.id_anuncio">Editar</a>
-                                    <a class="dropdown-item" data-bs-toggle="modal" data-bs-target="#deleteAnuncioModal" data-id="@anuncio.id_anuncio">Dar de baja</a>
+                                    <a class="dropdown-item" data-bs-toggle="modal" data-bs-target="#editAnuncioModal"
+                                        data-id="@anuncio.id_anuncio">Editar</a>
+                                    <a class="dropdown-item" data-bs-toggle="modal" data-bs-target="#deleteAnuncioModal"
+                                        data-id="@anuncio.id_anuncio">Dar de baja</a>
                                 </div>
                             </div>
                         </td>
                     </tr>
 
                 }
-    </tbody>
-</table>
-      
+            </tbody>
+        </table>
+
     </div>
 </div>
 
 
-<div class="modal fade" id="deleteAnuncioModal" tabindex="-1" aria-labelledby="deleteAnuncioModalLabel" aria-hidden="true">
-  <div class="modal-dialog">
-    <div class="modal-content">
-      <div class="modal-header">
-        <h5 class="modal-title" id="deleteAnuncioModalLabel">Eliminar Anuncio</h5>
-        <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
-      </div>
-      <div class="modal-body">
-        ¿Estás seguro que deseas eliminar a este anuncio?
-      </div>
-      <div class="modal-footer">
-        <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Cancelar</button>
-        <button type="button" class="btn btn-danger" id="confirmDeleteButton">Eliminar</button>
-      </div>
+<div class="modal fade" id="deleteAnuncioModal" tabindex="-1" aria-labelledby="deleteAnuncioModalLabel"
+    aria-hidden="true">
+    <div class="modal-dialog">
+        <div class="modal-content">
+            <div class="modal-header">
+                <h5 class="modal-title" id="deleteAnuncioModalLabel">Eliminar Anuncio</h5>
+                <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+            </div>
+            <div class="modal-body">
+                ¿Estás seguro que deseas eliminar a este anuncio?
+            </div>
+            <div class="modal-footer">
+                <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Cancelar</button>
+                <button type="button" class="btn btn-danger" id="confirmDeleteButton">Eliminar</button>
+            </div>
+        </div>
     </div>
-  </div>
 </div>
 
-<div class="modal fade" id="registroModal" tabindex="-1" role="dialog" aria-labelledby="registroModalLabel" aria-hidden="true">
+<div class="modal fade" id="registroModal" tabindex="-1" role="dialog" aria-labelledby="registroModalLabel"
+    aria-hidden="true">
     <div class="modal-dialog" role="document">
         <div class="modal-content">
             <div class="modal-header">
@@ -112,7 +135,8 @@
                 <form id="registroForm" enctype="multipart/form-data">
                     <div class="form-group">
                         <label for="Nombre_empresa_anunciante">Nombre de la Empresa</label>
-                        <input type="text" class="form-control" id="Nombre_empresa_anunciante" name="Nombre_empresa_anunciante" required>
+                        <input type="text" class="form-control" id="Nombre_empresa_anunciante"
+                            name="Nombre_empresa_anunciante" required>
                     </div>
                     <div class="form-group">
                         <label for="Tipo_oferta">Tipo de Oferta</label>
@@ -120,7 +144,8 @@
                     </div>
                     <div class="form-group">
                         <label for="Descripcion_oferta">Descripción de la Oferta</label>
-                        <textarea class="form-control" id="Descripcion_oferta" name="Descripcion_oferta" rows="3" required></textarea>
+                        <textarea class="form-control" id="Descripcion_oferta" name="Descripcion_oferta" rows="3"
+                            required></textarea>
                     </div>
                     <div class="form-group">
                         <label for="Direccion">Dirección</label>
@@ -128,7 +153,10 @@
                     </div>
                     <div class="form-group">
                         <label for="Telefono">Teléfono</label>
-                        <input type="text" class="form-control" id="Telefono" name="Telefono" required>
+                        <input type="tel" class="form-control" id="Telefono" name="Telefono" maxlength="10"
+                            minlength="10" required pattern="\d{10}"
+                            title="Por favor, ingresa un número de 10 dígitos sin espacios ni caracteres especiales">
+
                     </div>
                     <div class="form-group">
                         <label for="Vigencia_oferta">Vigencia de la Oferta</label>
@@ -145,7 +173,8 @@
     </div>
 </div>
 
-<div class="modal fade" id="editAnuncioModal" tabindex="-1" role="dialog" aria-labelledby="editAnuncioModalLabel" aria-hidden="true">
+<div class="modal fade" id="editAnuncioModal" tabindex="-1" role="dialog" aria-labelledby="editAnuncioModalLabel"
+    aria-hidden="true">
     <div class="modal-dialog" role="document">
         <div class="modal-content">
             <div class="modal-header">
@@ -155,11 +184,12 @@
                 </button>
             </div>
             <div class="modal-body">
-                <form id="editAnuncioForm" enctype="multipart/form-data" action="/Controller/UpdateAnuncio" method="post">
+                <form id="editAnuncioForm" enctype="multipart/form-data" asp-action="UpdateAnuncio" method="post">
                     <input type="hidden" id="editAnuncioId" name="id_anuncio" value="" />
                     <div class="form-group">
                         <label for="editNombre_empresa_anunciante">Nombre de la Empresa</label>
-                        <input type="text" class="form-control" id="editNombre_empresa_anunciante" name="Nombre_empresa_anunciante" required>
+                        <input type="text" class="form-control" id="editNombre_empresa_anunciante"
+                            name="Nombre_empresa_anunciante" required>
                     </div>
                     <div class="form-group">
                         <label for="editTipo_oferta">Tipo de Oferta</label>
@@ -167,7 +197,8 @@
                     </div>
                     <div class="form-group">
                         <label for="editDescripcion_oferta">Descripción de la Oferta</label>
-                        <textarea class="form-control" id="editDescripcion_oferta" name="Descripcion_oferta" rows="3" required></textarea>
+                        <textarea class="form-control" id="editDescripcion_oferta" name="Descripcion_oferta" rows="3"
+                            required></textarea>
                     </div>
                     <div class="form-group">
                         <label for="editDireccion">Dirección</label>
@@ -179,12 +210,13 @@
                     </div>
                     <div class="form-group">
                         <label for="editVigencia_oferta">Vigencia de la Oferta</label>
-                        <input type="date" class="form-control" id="editVigencia_oferta" name="Vigencia_oferta" required>
+                        <input type="date" class="form-control" id="editVigencia_oferta" name="Vigencia_oferta"
+                            required>
                     </div>
                     <div class="form-group">
                         <label for="editImagen_anuncio">Imagen del Anuncio</label>
                         <input type="file" class="form-control" id="editImagen_anuncio" name="Imagen_anuncio">
-                        <img id="imgedit" src="" width=100/>
+                        <img id="imgedit" src="" width=100 />
                     </div>
                     <button type="submit" class="btn btn-primary">Guardar cambios</button>
                 </form>
@@ -194,55 +226,56 @@
 </div>
 
 
-     <div class="modal fade" id="successModal" tabindex="-1" aria-labelledby="exampleModalLabel" aria-hidden="true">
-        <div class="modal-dialog">
-            <div class="modal-content">
-                <div class="modal-header">
-                    <h5 class="modal-title" id="exampleModalLabel">Éxito</h5>
-                    <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
-                </div>
-                <div class="modal-body">
-                    <p id="modalMessage"></p>
-                </div>
-                <div class="modal-footer">
-                    <button type="button" class="btn btn-secondary" data-bs-dismiss="modal" onclick="location.reload();">Cerrar</button>
-                </div>
+<div class="modal fade" id="successModal" tabindex="-1" aria-labelledby="exampleModalLabel" aria-hidden="true">
+    <div class="modal-dialog">
+        <div class="modal-content">
+            <div class="modal-header">
+                <h5 class="modal-title" id="exampleModalLabel">Éxito</h5>
+                <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+            </div>
+            <div class="modal-body">
+                <p id="modalMessage"></p>
+            </div>
+            <div class="modal-footer">
+                <button type="button" class="btn btn-secondary" data-bs-dismiss="modal"
+                    onclick="location.reload();">Cerrar</button>
             </div>
         </div>
     </div>
+</div>
 
 <script src="https://code.jquery.com/jquery-3.5.1.min.js"></script>
-  <script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.16.0/umd/popper.min.js"></script>
-  <script src="https://maxcdn.bootstrapcdn.com/bootstrap/4.5.2/js/bootstrap.min.js"></script>
+<script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.16.0/umd/popper.min.js"></script>
+<script src="https://maxcdn.bootstrapcdn.com/bootstrap/4.5.2/js/bootstrap.min.js"></script>
 
 
-    <script>
-      
+<script>
+
 
     document.addEventListener('DOMContentLoaded', function () {
-  $('#editAnuncioModal').on('show.bs.modal', function (event) {
-    var button = $(event.relatedTarget);
-    var anuncioId = button.data('id');
-console.log('entro');
-    $.ajax({
-        url: '@Url.Action("GetAnuncioById", "Anuncios")',
-        data: { id: anuncioId },
-        success: function (data) {
-            $('#editAnuncioId').val(data.id_anuncio);
-            $('#editNombre_empresa_anunciante').val(data.nombre_empresa_anunciante);
-            $('#editTipo_oferta').val(data.tipo_Oferta);
-            $('#editDescripcion_oferta').val(data.descripcion_oferta);
-            $('#editDireccion').val(data.direccion);
-            $('#editTelefono').val(data.telefono);
-            console.log(data.vigencia_oferta)
-            var fechaVigencia = data.vigencia_oferta.split('T')[0];
-                $('#editVigencia_oferta').val(fechaVigencia);
-            if(data.Imagen_anuncio!=null)
-            document.getElementById("imgedit").src=data.Imagen_anuncio;
-            
-        }
-    });
-});
+        $('#editAnuncioModal').on('show.bs.modal', function (event) {
+            var button = $(event.relatedTarget);
+            var anuncioId = button.data('id');
+            console.log('entro');
+            $.ajax({
+                url: '@Url.Action("GetAnuncioById", "Anuncios")',
+                data: { id: anuncioId },
+                success: function (data) {
+                    $('#editAnuncioId').val(data.id_anuncio);
+                    $('#editNombre_empresa_anunciante').val(data.nombre_empresa_anunciante);
+                    $('#editTipo_oferta').val(data.tipo_Oferta);
+                    $('#editDescripcion_oferta').val(data.descripcion_oferta);
+                    $('#editDireccion').val(data.direccion);
+                    $('#editTelefono').val(data.telefono);
+                    console.log(data.vigencia_oferta)
+                    var fechaVigencia = data.vigencia_oferta.split('T')[0];
+                    $('#editVigencia_oferta').val(fechaVigencia);
+                    if (data.Imagen_anuncio != null)
+                        document.getElementById("imgedit").src = data.Imagen_anuncio;
+
+                }
+            });
+        });
 
 
         const searchInput = document.getElementById('searchInput');
@@ -266,8 +299,8 @@ console.log('entro');
                 }
             });
         });
-        
-        
+
+
         const deleteUserModal = new bootstrap.Modal(document.getElementById('deleteAnuncioModal'));
         const confirmDeleteButton = document.getElementById('confirmDeleteButton');
         let userIdToDelete;
@@ -287,42 +320,42 @@ console.log('entro');
                     'X-CSRF-TOKEN': document.querySelector('input[name="__RequestVerificationToken"]').value
                 }
             })
-            .then(response => response.json())
-            .then(data => {
-                if (data.success) {
-                    document.querySelector(`a[data-id="${userIdToDelete}"]`).closest('tr').remove();
-                    deleteUserModal.hide();
-                    alert(data.message);
-                } else {
-                    alert(data.message);
-                }
-            })
-            .catch(error => console.error('Error:', error));
+                .then(response => response.json())
+                .then(data => {
+                    if (data.success) {
+                        document.querySelector(`a[data-id="${userIdToDelete}"]`).closest('tr').remove();
+                        deleteUserModal.hide();
+                        alert(data.message);
+                    } else {
+                        alert(data.message);
+                    }
+                })
+                .catch(error => console.error('Error:', error));
         });
     });
 
     document.getElementById('registroForm').addEventListener('submit', function (event) {
-    event.preventDefault();
+        event.preventDefault();
 
-    var formData = new FormData(this);
+        var formData = new FormData(this);
 
-    fetch('/Anuncios/RegistrarAnuncio', {
-        method: 'POST',
-        body: formData
-    })
-    .then(response => response.json())
-    .then(data => {
-        if (data) {
-            $('#registroModal').modal('hide');
-            const modalMessage = document.getElementById('modalMessage');
-            $('#successModal').modal('show');
-            modalMessage.innerText= data.message;
-            
-        } else {
-            alert('Error al registrar');
-        }
-    })
-    .catch(error => console.error('Error:', error));
-});
+        fetch('/Anuncios/RegistrarAnuncio', {
+            method: 'POST',
+            body: formData
+        })
+            .then(response => response.json())
+            .then(data => {
+                if (data) {
+                    $('#registroModal').modal('hide');
+                    const modalMessage = document.getElementById('modalMessage');
+                    $('#successModal').modal('show');
+                    modalMessage.innerText = data.message;
+
+                } else {
+                    alert('Error al registrar');
+                }
+            })
+            .catch(error => console.error('Error:', error));
+    });
 
 </script>

@@ -13,7 +13,7 @@ using System.Reflection;
 [assembly: System.Reflection.AssemblyCompanyAttribute("nunu_panel")]
 [assembly: System.Reflection.AssemblyConfigurationAttribute("Debug")]
 [assembly: System.Reflection.AssemblyFileVersionAttribute("1.0.0.0")]
-[assembly: System.Reflection.AssemblyInformationalVersionAttribute("1.0.0+e8eaf582cc1c2ce560c6afa9ca81bd2f45a9bd02")]
+[assembly: System.Reflection.AssemblyInformationalVersionAttribute("1.0.0+10247fb87dcc31b5f6c6818a674a3241ab8b683b")]
 [assembly: System.Reflection.AssemblyProductAttribute("nunu_panel")]
 [assembly: System.Reflection.AssemblyTitleAttribute("nunu_panel")]
 [assembly: System.Reflection.AssemblyVersionAttribute("1.0.0.0")]
