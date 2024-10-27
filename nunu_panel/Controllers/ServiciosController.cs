@@ -12,7 +12,7 @@ namespace nunu_panel.Controllers
     {
         private readonly ILogger<ServiciosController> _logger;
         
-        private static readonly string apiBaseUrl = "https://api-nunu.igrtecapi.site/api/";
+        private static readonly string apiBaseUrl = "https://api-nunu.igrtec.net/api/";
 
         public ServiciosController(ILogger<ServiciosController> logger)
         {
