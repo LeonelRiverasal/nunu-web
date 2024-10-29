@@ -193,9 +193,19 @@
 
 
                             <div class="topbar-divider d-none d-sm-block"></div>
-
+                            <li class="nav-item">
+                                <div class="dropdown">
+                                    <button class="btn btn-secondary dropdown-toggle" type="button" id="logout-button" data-bs-toggle="dropdown" aria-expanded="false">
+                                        @ViewBag.AdminName
+                                    </button>
+                                    <ul class="dropdown-menu" aria-labelledby="logout-button">
+                                        <li><a class="dropdown-item" data-bs-toggle="modal"
+                                        data-bs-target="#logoutModal">Cerrar sesión</a></li>
+                                    </ul>
+                                </div>
+                            </li>
                             <!-- Nav Item - User Information -->
-                            <li class="nav-item dropdown no-arrow">
+                            @* <li class="nav-item dropdown no-arrow">
                                 <a class="nav-link dropdown-toggle" href="#" id="userDropdown" role="button"
                                     data-bs-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
                                     <div class="d-flex flex-column ms-2">
@@ -214,7 +224,7 @@
                                         Logout
                                     </a>
                                 </div>
-                            </li>
+                            </li> *@
                         </ul>
                     </nav>
                     <div class="container-fluid">
@@ -235,10 +245,10 @@
                             <span aria-hidden="true">×</span>
                         </button>
                     </div>
-                    <div class="modal-body">Select "Logout" below if you are ready to end your current session.</div>
+                    <div class="modal-body">¿Deseas cerrar sesión?</div>
                     <div class="modal-footer">
-                        <button class="btn btn-secondary" type="button" data-bs-dismiss="modal">Cancel</button>
-                        <a class="btn btn-primary" asp-controller="Login" asp-action="Index">Logout</a>
+                        <button class="btn btn-secondary" type="button" data-bs-dismiss="modal">Cancelar</button>
+                        <a class="btn btn-primary" asp-controller="Login" asp-action="Index">Cerrar sesión</a>
                     </div>
                 </div>
             </div>

@@ -79,3 +79,12 @@ button.accept-policy[b-emd653bi0p] {
   white-space: nowrap;
   line-height: 60px;
 }
+
+
+#logout-button{
+  color: #000;
+
+}
+#logout-button:hover{
+  background: transparent;
+}

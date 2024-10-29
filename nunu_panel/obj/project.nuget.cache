@@ -1,15 +1,11 @@
 {
   "version": 2,
-  "dgSpecHash": "7tE0KTErhs39wsRXXYjgSQNB/RqYned5/ZXMFokPs84GNWB7SVfZO5oVLqTErzy0HMRlmgWoYgzmlCaJ6syDGA==",
+  "dgSpecHash": "d19qZAh0QPAaEiY53UPrd8LtqfbyFH79uy6EofNPFTI+RhPtr/o/3QM1eYd94Q7FcIRvHXlyfQlNrsxvqAXftw==",
   "success": true,
-  "projectFilePath": "d:\\Github\\nunu-web\\nunu_panel\\nunu_panel.csproj",
+  "projectFilePath": "C:\\Users\\ximen\\OneDrive\\Escritorio\\nunu-web\\nunu_panel\\nunu_panel.csproj",
   "expectedPackageFiles": [
-    "C:\\Users\\linse\\.nuget\\packages\\newtonsoft.json\\13.0.3\\newtonsoft.json.13.0.3.nupkg.sha512",
-    "C:\\Users\\linse\\.nuget\\packages\\restsharp\\111.4.1\\restsharp.111.4.1.nupkg.sha512",
-    "C:\\Users\\linse\\.nuget\\packages\\microsoft.netcore.app.ref\\6.0.31\\microsoft.netcore.app.ref.6.0.31.nupkg.sha512",
-    "C:\\Users\\linse\\.nuget\\packages\\microsoft.windowsdesktop.app.ref\\6.0.31\\microsoft.windowsdesktop.app.ref.6.0.31.nupkg.sha512",
-    "C:\\Users\\linse\\.nuget\\packages\\microsoft.aspnetcore.app.ref\\6.0.31\\microsoft.aspnetcore.app.ref.6.0.31.nupkg.sha512",
-    "C:\\Users\\linse\\.nuget\\packages\\microsoft.netcore.app.host.win-x64\\6.0.31\\microsoft.netcore.app.host.win-x64.6.0.31.nupkg.sha512"
+    "C:\\Users\\ximen\\.nuget\\packages\\newtonsoft.json\\13.0.3\\newtonsoft.json.13.0.3.nupkg.sha512",
+    "C:\\Users\\ximen\\.nuget\\packages\\restsharp\\111.4.1\\restsharp.111.4.1.nupkg.sha512"
   ],
   "logs": [
     {

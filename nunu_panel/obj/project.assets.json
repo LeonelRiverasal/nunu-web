@@ -94,19 +94,24 @@
     ]
   },
   "packageFolders": {
-    "C:\\Users\\linse\\.nuget\\packages\\": {}
+    "C:\\Users\\ximen\\.nuget\\packages\\": {},
+    "C:\\Program Files (x86)\\Microsoft Visual Studio\\Shared\\NuGetPackages": {}
   },
   "project": {
     "version": "1.0.0",
     "restore": {
-      "projectUniqueName": "d:\\Github\\nunu-web\\nunu_panel\\nunu_panel.csproj",
+      "projectUniqueName": "C:\\Users\\ximen\\OneDrive\\Escritorio\\nunu-web\\nunu_panel\\nunu_panel.csproj",
       "projectName": "nunu_panel",
-      "projectPath": "d:\\Github\\nunu-web\\nunu_panel\\nunu_panel.csproj",
-      "packagesPath": "C:\\Users\\linse\\.nuget\\packages\\",
-      "outputPath": "d:\\Github\\nunu-web\\nunu_panel\\obj\\",
+      "projectPath": "C:\\Users\\ximen\\OneDrive\\Escritorio\\nunu-web\\nunu_panel\\nunu_panel.csproj",
+      "packagesPath": "C:\\Users\\ximen\\.nuget\\packages\\",
+      "outputPath": "C:\\Users\\ximen\\OneDrive\\Escritorio\\nunu-web\\nunu_panel\\obj\\",
       "projectStyle": "PackageReference",
+      "fallbackFolders": [
+        "C:\\Program Files (x86)\\Microsoft Visual Studio\\Shared\\NuGetPackages"
+      ],
       "configFilePaths": [
-        "C:\\Users\\linse\\AppData\\Roaming\\NuGet\\NuGet.Config",
+        "C:\\Users\\ximen\\AppData\\Roaming\\NuGet\\NuGet.Config",
+        "C:\\Program Files (x86)\\NuGet\\Config\\Microsoft.VisualStudio.FallbackLocation.config",
         "C:\\Program Files (x86)\\NuGet\\Config\\Microsoft.VisualStudio.Offline.config"
       ],
       "originalTargetFrameworks": [
@@ -157,24 +162,6 @@
         ],
         "assetTargetFallback": true,
         "warn": true,
-        "downloadDependencies": [
-          {
-            "name": "Microsoft.AspNetCore.App.Ref",
-            "version": "[6.0.31, 6.0.31]"
-          },
-          {
-            "name": "Microsoft.NETCore.App.Host.win-x64",
-            "version": "[6.0.31, 6.0.31]"
-          },
-          {
-            "name": "Microsoft.NETCore.App.Ref",
-            "version": "[6.0.31, 6.0.31]"
-          },
-          {
-            "name": "Microsoft.WindowsDesktop.App.Ref",
-            "version": "[6.0.31, 6.0.31]"
-          }
-        ],
         "frameworkReferences": {
           "Microsoft.AspNetCore.App": {
             "privateAssets": "none"
@@ -183,7 +170,7 @@
             "privateAssets": "all"
           }
         },
-        "runtimeIdentifierGraphPath": "C:\\Program Files\\dotnet\\sdk\\8.0.206\\RuntimeIdentifierGraph.json"
+        "runtimeIdentifierGraphPath": "C:\\Program Files\\dotnet\\sdk\\8.0.205\\RuntimeIdentifierGraph.json"
       }
     }
   },
