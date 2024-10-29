@@ -587,7 +587,7 @@
   
   @media (min-width: 1200px) {
     .container, .container-sm, .container-md, .container-lg, .container-xl {
-      max-width: 1140px;
+      max-width: 1250px;
     }
   }
   
@@ -9820,8 +9820,9 @@
   .container-md,
   .container-lg,
   .container-xl {
-    padding-left: 1.5rem;
-    padding-right: 1.5rem;
+    padding-left: 1.25rem;
+    padding-right: 1.25rem;
+    padding-bottom: 3rem;
   }
   
   .scroll-to-top {
@@ -11291,3 +11292,5 @@
   body.sidebar-toggled footer.sticky-footer {
     width: 100%;
   }
+
+  

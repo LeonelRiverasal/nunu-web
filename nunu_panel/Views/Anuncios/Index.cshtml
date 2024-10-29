@@ -18,8 +18,11 @@
 }
 <div class="container">
     <div class="row mb-3">
-        <div class="col">
-            <form asp-controller="Anuncios" asp-action="Index">
+        <div class="col-md-12">
+            <div class="form-group">
+                <input type="text" name="" id="textoLibre" class="form-control" placeholder="Busca por anuncio">
+            </div>
+            @* <form asp-controller="Anuncios" asp-action="Index">
 
                 <div class="groupSearch">
                     <svg class="iconSearch" aria-hidden="true" viewBox="0 0 24 24">
@@ -32,7 +35,7 @@
                     <input value="" id="searchInput" name="searchTerm" placeholder="Busca por Nombre Empresa/ID"
                         type="search" class="inputSearch">
                 </div>
-            </form>
+            </form> *@
         </div>
     </div>
 
@@ -40,7 +43,7 @@
         <div class="breadcrumb">
             <a href="/Anuncios" class="breadcrumb-item active">Anuncios</a> >
         </div>
-        Mostrando @Model.Count
+        @* Mostrando @Model.Count *@
     </div>
 
     <div class="col-md-12 mt-3">
@@ -48,7 +51,7 @@
             Registrar Anuncio
         </button>
 
-        <table class="table">
+        <table class="table" id="dataTable">
             <thead>
                 <tr>
                     <th scope="col" class="">ID</th>
@@ -359,3 +362,10 @@
     });
 
 </script>
+@section Scripts{
+    
+<script>
+    inicializarTable('#dataTable');
+    filtrar('#dataTable','','','','','')
+</script>
+}

@@ -703,3 +703,21 @@ input:checked + .slider:before {
     color: #6c757d;
     margin-top: 12px;
 }
+
+div.dt-container div.dt-paging{
+    float: right;
+  }
+
+  .pagination .page-item.active .page-link{
+    background-color: var(--blue) !important;
+    border-color: none !important;
+    border-radius: 8px !important;
+  }
+
+  table.table.dataTable{
+    border-spacing: 0 1rem !important;
+  }
+
+  .table .td-middle{
+    border-bottom: 1px solid #d1d1d1;
+  }

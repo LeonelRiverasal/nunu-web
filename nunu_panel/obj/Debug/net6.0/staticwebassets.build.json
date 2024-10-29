@@ -1,6 +1,6 @@
 {
   "Version": 1,
-  "Hash": "igFAvU0TEGHwHm3tdhsKsuL2U40LfXdDpbErJFYRcPc=",
+  "Hash": "FZC8JOQyTeEGpnsv7Q3iUHCDZXATZP6cwrwdjXx0tr8=",
   "Source": "nunu_panel",
   "BasePath": "_content/nunu_panel",
   "Mode": "Default",
@@ -207,6 +207,25 @@
       "OriginalItemSpec": "wwwroot\\js\\chart-bar-demo.js"
     },
     {
+      "Identity": "C:\\Users\\ximen\\OneDrive\\Escritorio\\nunu-web\\nunu_panel\\wwwroot\\js\\filtro.js",
+      "SourceId": "nunu_panel",
+      "SourceType": "Discovered",
+      "ContentRoot": "C:\\Users\\ximen\\OneDrive\\Escritorio\\nunu-web\\nunu_panel\\wwwroot\\",
+      "BasePath": "_content/nunu_panel",
+      "RelativePath": "js/filtro.js",
+      "AssetKind": "All",
+      "AssetMode": "All",
+      "AssetRole": "Primary",
+      "AssetMergeBehavior": "PreferTarget",
+      "AssetMergeSource": "",
+      "RelatedAsset": "",
+      "AssetTraitName": "",
+      "AssetTraitValue": "",
+      "CopyToOutputDirectory": "Never",
+      "CopyToPublishDirectory": "PreserveNewest",
+      "OriginalItemSpec": "wwwroot\\js\\filtro.js"
+    },
+    {
       "Identity": "C:\\Users\\ximen\\OneDrive\\Escritorio\\nunu-web\\nunu_panel\\wwwroot\\js\\site.js",
       "SourceId": "nunu_panel",
       "SourceType": "Discovered",
@@ -224,6 +243,25 @@
       "CopyToOutputDirectory": "Never",
       "CopyToPublishDirectory": "PreserveNewest",
       "OriginalItemSpec": "wwwroot\\js\\site.js"
+    },
+    {
+      "Identity": "C:\\Users\\ximen\\OneDrive\\Escritorio\\nunu-web\\nunu_panel\\wwwroot\\js\\tablas.js",
+      "SourceId": "nunu_panel",
+      "SourceType": "Discovered",
+      "ContentRoot": "C:\\Users\\ximen\\OneDrive\\Escritorio\\nunu-web\\nunu_panel\\wwwroot\\",
+      "BasePath": "_content/nunu_panel",
+      "RelativePath": "js/tablas.js",
+      "AssetKind": "All",
+      "AssetMode": "All",
+      "AssetRole": "Primary",
+      "AssetMergeBehavior": "PreferTarget",
+      "AssetMergeSource": "",
+      "RelatedAsset": "",
+      "AssetTraitName": "",
+      "AssetTraitValue": "",
+      "CopyToOutputDirectory": "Never",
+      "CopyToPublishDirectory": "PreserveNewest",
+      "OriginalItemSpec": "wwwroot\\js\\tablas.js"
     },
     {
       "Identity": "C:\\Users\\ximen\\OneDrive\\Escritorio\\nunu-web\\nunu_panel\\wwwroot\\lib\\bootstrap\\dist\\css\\bootstrap-grid.css",

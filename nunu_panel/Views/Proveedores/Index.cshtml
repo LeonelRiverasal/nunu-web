@@ -5,8 +5,11 @@
 }
 <div class="container">
     <div class="row mb-3">
-        <div class="col">
-            <form asp-controller="Pedidos" asp-action="Index">
+        <div class="col-md-12">
+            <div class="form-group">
+                <input type="text" name="" id="textoLibre" class="form-control" placeholder="Busca por proveedor/ID">
+            </div>
+            @* <form asp-controller="Pedidos" asp-action="Index">
                 <div class="groupSearch">
                     <svg class="iconSearch" aria-hidden="true" viewBox="0 0 24 24">
                         <g>
@@ -15,10 +18,10 @@
                             </path>
                         </g>
                     </svg>
-                    <input value="" id="searchInput" name="searchTerm" placeholder="Busca por proveedor/ID"
+                    <input value="" id="textoLibre" name="searchTerm" placeholder="Busca por proveedor/ID"
                         type="search" class="inputSearch">
                 </div>
-            </form>
+            </form> *@
         </div>
     </div>
     <div class="row">
@@ -27,13 +30,14 @@
             @* <button type="button" class="btn btn-filter" data-bs-toggle="modal" data-bs-target="#filterModal">
             <i class="fas fa-filter"></i> <!-- Icono de filtro -->
             </button> *@
-            <div class="mb-3">
-                <label for="filterVerified" class="form-label">Filtrar por estado de verificación:</label>
+            <div class="mb-3" id="filterForm">
+
+                @* <label for="filterVerified" class="form-label">Filtrar por estado de verificación:</label>
                 <select id="filterVerified" class="form-select" onchange="filterTable()">
                     <option value="all">Todos</option>
                     <option value="verified">Verificados</option>
                     <option value="notVerified">No verificados</option>
-                </select>
+                </select> *@
             </div>
 
         </div>
@@ -43,15 +47,15 @@
         <div class="breadcrumb">
             <a href="/Proveedores" class="breadcrumb-item active">Proveedores</a> >
         </div>
-        Mostrando @Model.Count
+        @* Mostrando @Model.Count *@
     </div>
 
     <div class="col-md-12 mt-3 table-responsive">
-        <table class="table">
+        <table class="table" id="dataTable">
             <thead>
                 <tr>
                     <th scope="col" class="">ID</th>
-                    <th scope="col" class=""></th>
+                    <th scope="col" class="">Estatus</th>
                     <th scope="col" class="">Proveedor</th>
                     @* <th scope="col" class="textTableCenter">Ciudad</th> *@
                     @* <th scope="col" class="textTableCenter">Reputación</th> *@
@@ -223,8 +227,9 @@
 <script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.16.0/umd/popper.min.js"></script>
 <script src="https://maxcdn.bootstrapcdn.com/bootstrap/4.5.2/js/bootstrap.min.js"></script>
 
+
 <script>
-    function filterTable() {
+    @* function filterTable() {
         var filter = document.getElementById("filterVerified").value;
         var rows = document.querySelectorAll(".provider-row");
 
@@ -240,7 +245,7 @@
             }
         });
 
-    }
+    } *@
 
 
 
@@ -271,7 +276,7 @@
     });
 
 
-    const searchInput = document.getElementById('searchInput');
+    @* const searchInput = document.getElementById('searchInput');
     const table = document.querySelector('.table tbody');
 
     searchInput.addEventListener('keyup', function () {
@@ -291,7 +296,7 @@
                 row.style.display = 'none';
             }
         });
-    });
+    }); *@
     document.querySelectorAll('.view-document-button').forEach(function (button) {
         button.addEventListener('click', function () {
             var inputId = this.getAttribute('data-input-id');
@@ -374,3 +379,11 @@
             .catch(error => console.error('Error:', error));
     });
 </script>
+
+@section Scripts{
+    
+<script>
+    inicializarTable('#dataTable');
+    filtrar('#dataTable',1,'','','','')
+</script>
+}

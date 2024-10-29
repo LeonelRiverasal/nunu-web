@@ -88,3 +88,6 @@ button.accept-policy[b-emd653bi0p] {
 #logout-button:hover{
   background: transparent;
 }
+div.dt-container div.dt-search{
+  display: none !important;
+}

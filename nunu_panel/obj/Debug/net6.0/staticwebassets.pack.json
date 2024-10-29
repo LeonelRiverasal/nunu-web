@@ -37,8 +37,16 @@
       "PackagePath": "staticwebassets\\js\\chart-bar-demo.js"
     },
     {
+      "Id": "C:\\Users\\ximen\\OneDrive\\Escritorio\\nunu-web\\nunu_panel\\wwwroot\\js\\filtro.js",
+      "PackagePath": "staticwebassets\\js\\filtro.js"
+    },
+    {
       "Id": "C:\\Users\\ximen\\OneDrive\\Escritorio\\nunu-web\\nunu_panel\\wwwroot\\js\\site.js",
       "PackagePath": "staticwebassets\\js\\site.js"
+    },
+    {
+      "Id": "C:\\Users\\ximen\\OneDrive\\Escritorio\\nunu-web\\nunu_panel\\wwwroot\\js\\tablas.js",
+      "PackagePath": "staticwebassets\\js\\tablas.js"
     },
     {
       "Id": "C:\\Users\\ximen\\OneDrive\\Escritorio\\nunu-web\\nunu_panel\\wwwroot\\lib\\bootstrap\\LICENSE",
