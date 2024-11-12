@@ -197,11 +197,13 @@
                             <!-- Nav Item - Alerts -->
 
 
-                            <div class="topbar-divider d-none d-sm-block"></div>
+                            @* <div class="topbar-divider d-none d-sm-block"></div> *@
                             <li class="nav-item">
+                                
                                 <div class="dropdown">
                                     <button class="btn btn-secondary dropdown-toggle" type="button" id="logout-button" data-bs-toggle="dropdown" aria-expanded="false">
-                                        @ViewBag.AdminName
+                                        @* @ViewBag.AdminName *@
+                                        <i class="bi bi-person-fill" id="user-icon-nav"></i>
                                     </button>
                                     <ul class="dropdown-menu" aria-labelledby="logout-button">
                                         <li><a class="dropdown-item" data-bs-toggle="modal"

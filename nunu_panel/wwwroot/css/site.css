@@ -82,11 +82,17 @@ button.accept-policy[b-emd653bi0p] {
 
 
 #logout-button{
-  color: #000;
-
+  color: var(--primary);
+  width: 180px;
+  display: flex;
+  justify-content: end;
 }
 #logout-button:hover{
   background: transparent;
+}
+#logout-button:focus{
+  background: transparent;
+  box-shadow: none;
 }
 div.dt-container div.dt-search{
   display: none !important;
