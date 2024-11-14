@@ -20,7 +20,7 @@
     <div class="row mb-3">
         <div class="col-md-12">
             <div class="form-group">
-                <input type="text" name="" id="textoLibre" class="form-control" placeholder="Busca por anuncio">
+                <input type="text" name="" id="searchInput" class="form-control" placeholder="Busca por anuncio">
             </div>
             @* <form asp-controller="Anuncios" asp-action="Index">
 
@@ -319,8 +319,7 @@
             fetch(`/Anuncios/EliminarAnuncio?idAnuncio=${userIdToDelete}`, {
                 method: 'DELETE',
                 headers: {
-                    'Content-Type': 'application/json',
-                    'X-CSRF-TOKEN': document.querySelector('input[name="__RequestVerificationToken"]').value
+                    'Content-Type': 'application/json'
                 }
             })
                 .then(response => response.json())
@@ -362,10 +361,10 @@
     });
 
 </script>
-@section Scripts{
-    
-<script>
-    inicializarTable('#dataTable');
-    filtrar('#dataTable','','','','','')
-</script>
+@section Scripts {
+
+    <script>
+        inicializarTable('#dataTable');
+        filtrar('#dataTable', '', '', '', '', '')
+    </script>
 }
