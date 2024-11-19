@@ -354,7 +354,16 @@
     });
     const filtroModal = new bootstrap.Modal(document.getElementById('filterModal'));
     document.getElementById('aprovarProveedor').addEventListener('click', function () {
+        
         var idderpro = document.getElementById("idproveedor").value;
+        Swal.fire({
+            title: 'Verificando documentos',
+            allowOutsideClick: false,
+            allowEscapeKey: false,
+            didOpen: () => {
+                Swal.showLoading();
+            }
+        })
         fetch(`/Proveedores/AprovarProveedor?idProveedor=${idderpro}`, {
             method: 'POST',
             headers: {
@@ -363,6 +372,7 @@
         })
             .then(response => response.json())
             .then(data => {
+                Swal.close();
                 if (data && data.success) {
                     filtroModal.hide();
                     //alert(data.message);

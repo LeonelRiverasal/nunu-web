@@ -1,10 +1,10 @@
+using System.Collections.Generic;
+using System.Diagnostics;
+using System.Net;
 using Microsoft.AspNetCore.Mvc;
+using Newtonsoft.Json;
 using nunu_panel.Models;
 using RestSharp;
-using Newtonsoft.Json;
-using System.Collections.Generic;
-using System.Net;
-using System.Diagnostics;
 
 namespace nunu_panel.Controllers
 {
@@ -16,74 +16,73 @@ namespace nunu_panel.Controllers
         {
             _logger = logger;
         }
-        private static readonly string apiBaseUrl = "https://api-nunu.igrtec.net/api/";
+
+        private static readonly string apiBaseUrl = "https://api-nunu.igrtecapi.site/api/";
+
         public async Task<IActionResult> Index()
         {
             var users = GetUsuarios();
-            int totalUsuarios=0;
+            int totalUsuarios = 0;
             if (users != null)
             {
                 totalUsuarios = users.Count;
             }
             ViewBag.TotalUsuarios = totalUsuarios;
-            var anuncios = await GetAnuncios();  
-            int totalAnuncios = anuncios?.Count ?? 0; 
+            var anuncios = await GetAnuncios();
+            int totalAnuncios = anuncios?.Count ?? 0;
             ViewBag.TotalAnuncios = totalAnuncios;
-            var proveedores = await GetProveedores();  
-            int totalproveedores = proveedores?.Count ?? 0; 
+            var proveedores = await GetProveedores();
+            int totalproveedores = proveedores?.Count ?? 0;
             ViewBag.TotalProveedores = totalproveedores;
-            var servicios = await GetServicios();  
-            int totalservicios = servicios?.Count ?? 0; 
+            var servicios = await GetServicios();
+            int totalservicios = servicios?.Count ?? 0;
             ViewBag.TotalServicios = totalservicios;
 
-            var adminName = HttpContext.Session.GetString("AdminName");    
+            var adminName = HttpContext.Session.GetString("AdminName");
             ViewBag.AdminName = adminName;
             return View();
         }
+
         public async Task<List<ServicioProveedorModel>?> GetServicios()
-{
-    try
-    {
-        var options = new RestSharp.RestClientOptions(apiBaseUrl)
         {
-            MaxTimeout = -1
-        };
+            try
+            {
+                var options = new RestSharp.RestClientOptions(apiBaseUrl) { MaxTimeout = -1 };
 
-        var client = new RestSharp.RestClient(options);
-        var request = new RestSharp.RestRequest("/Servicios", Method.Get);
-        request.AddHeader("Content-Type", "application/json");
-        
-        // Ejecutar la solicitud
-        var response = await client.ExecuteAsync<List<ServicioProveedorModel>>(request);
+                var client = new RestSharp.RestClient(options);
+                var request = new RestSharp.RestRequest("/Servicios", Method.Get);
+                request.AddHeader("Content-Type", "application/json");
 
-        if (response.StatusCode == HttpStatusCode.OK)
-        {
-            string? content = response.Content;
-            List<ServicioProveedorModel>? servicios = JsonConvert.DeserializeObject<List<ServicioProveedorModel>>(content);
-            return servicios;
+                // Ejecutar la solicitud
+                var response = await client.ExecuteAsync<List<ServicioProveedorModel>>(request);
+
+                if (response.StatusCode == HttpStatusCode.OK)
+                {
+                    string? content = response.Content;
+                    List<ServicioProveedorModel>? servicios = JsonConvert.DeserializeObject<
+                        List<ServicioProveedorModel>
+                    >(content);
+                    return servicios;
+                }
+                else
+                {
+                    // Manejo de errores o respuesta no exitosa
+                    return null;
+                }
+            }
+            catch (Exception ex)
+            {
+                // Manejo de excepciones
+                Console.WriteLine($"Error: {ex.Message}");
+                return null;
+            }
         }
-        else
-        {
-            // Manejo de errores o respuesta no exitosa
-            return null;
-        }
-    }
-    catch (Exception ex)
-    {
-        // Manejo de excepciones
-        Console.WriteLine($"Error: {ex.Message}");
-        return null;
-    }
-}
 
         public async Task<List<ProveedorModel>?> GetProveedores()
         {
             try
             {
-                var options = new RestSharp.RestClientOptions(apiBaseUrl)
-                {
-                    MaxTimeout = -1
-                };
+                var options = new RestSharp.RestClientOptions(apiBaseUrl) { MaxTimeout = -1 };
 
                 var client = new RestSharp.RestClient(options);
                 var request = new RestSharp.RestRequest("/Proveedores", Method.Get);
@@ -91,7 +90,9 @@ namespace nunu_panel.Controllers
                 if (response.StatusCode == HttpStatusCode.OK)
                 {
                     string? content = response.Content;
-                    List<ProveedorModel>? Proveedores = JsonConvert.DeserializeObject<List<ProveedorModel>>(content);
+                    List<ProveedorModel>? Proveedores = JsonConvert.DeserializeObject<
+                        List<ProveedorModel>
+                    >(content);
                     return Proveedores;
                 }
                 else
@@ -104,14 +105,12 @@ namespace nunu_panel.Controllers
                 return null;
             }
         }
-      public async Task<List<AnuncioDetalleModel>?> GetAnuncios()
+
+        public async Task<List<AnuncioDetalleModel>?> GetAnuncios()
         {
             try
             {
-                var options = new RestSharp.RestClientOptions(apiBaseUrl)
-                {
-                    MaxTimeout = -1
-                };
+                var options = new RestSharp.RestClientOptions(apiBaseUrl) { MaxTimeout = -1 };
 
                 var client = new RestSharp.RestClient(options);
                 var request = new RestSharp.RestRequest("/Anuncios", Method.Get);
@@ -119,7 +118,9 @@ namespace nunu_panel.Controllers
                 if (response.StatusCode == HttpStatusCode.OK)
                 {
                     string? content = response.Content;
-                    List<AnuncioDetalleModel>? anuncios = JsonConvert.DeserializeObject<List<AnuncioDetalleModel>>(content);
+                    List<AnuncioDetalleModel>? anuncios = JsonConvert.DeserializeObject<
+                        List<AnuncioDetalleModel>
+                    >(content);
                     return anuncios;
                 }
                 else
@@ -132,14 +133,12 @@ namespace nunu_panel.Controllers
                 return null;
             }
         }
-     public List<UsuarioModel>? GetUsuarios()
+
+        public List<UsuarioModel>? GetUsuarios()
         {
             try
             {
-                var options = new RestSharp.RestClientOptions(apiBaseUrl)
-                {
-                    MaxTimeout = -1
-                };
+                var options = new RestSharp.RestClientOptions(apiBaseUrl) { MaxTimeout = -1 };
 
                 var client = new RestSharp.RestClient(options);
                 var request = new RestSharp.RestRequest("/Usuarios", Method.Get);
@@ -147,7 +146,9 @@ namespace nunu_panel.Controllers
                 if (response.StatusCode == HttpStatusCode.OK)
                 {
                     string? content = response.Content;
-                    List<UsuarioModel>? usuarios = JsonConvert.DeserializeObject<List<UsuarioModel>>(content);
+                    List<UsuarioModel>? usuarios = JsonConvert.DeserializeObject<
+                        List<UsuarioModel>
+                    >(content);
                     return usuarios;
                 }
                 else
@@ -169,7 +170,12 @@ namespace nunu_panel.Controllers
         [ResponseCache(Duration = 0, Location = ResponseCacheLocation.None, NoStore = true)]
         public IActionResult Error()
         {
-            return View(new ErrorViewModel { RequestId = Activity.Current?.Id ?? HttpContext.TraceIdentifier });
+            return View(
+                new ErrorViewModel
+                {
+                    RequestId = Activity.Current?.Id ?? HttpContext.TraceIdentifier
+                }
+            );
         }
     }
 }

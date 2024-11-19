@@ -17,7 +17,7 @@ namespace nunu_panel.Controllers
             _logger = logger;
         }
 
-        private static readonly string apiBaseUrl = "https://api-nunu.igrtec.net/api/";
+        private static readonly string apiBaseUrl = "https://api-nunu.igrtecapi.site/api/";
 
         [HttpGet]
         public IActionResult Index(string? error, string? success)

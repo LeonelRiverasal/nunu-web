@@ -7,12 +7,13 @@
         <title>@ViewData["Title"] - nunu_panel</title>
         <link rel="stylesheet" href="~/lib/bootstrap/dist/css/bootstrap.min.css" />
         <link href="https://cdn.jsdelivr.net/npm/simple-datatables@7.1.2/dist/style.min.css" rel="stylesheet" />
-        <link href="https://cdn.datatables.net/v/bs5/dt-2.1.8/r-3.0.3/sc-2.4.3/sl-2.1.0/datatables.min.css" rel="stylesheet">
+        <link href="https://cdn.datatables.net/v/bs5/dt-2.1.8/r-3.0.3/sc-2.4.3/sl-2.1.0/datatables.min.css"
+            rel="stylesheet">
         <link rel="stylesheet" href="~/css/site.css" asp-append-version="true" />
         <link rel="stylesheet" href="~/css/general.css" asp-append-version="true" />
         <link rel="stylesheet" href="~/css/nunu_panel.css" asp-append-version="true" />
-        
- 
+        <script src="https://cdn.jsdelivr.net/npm/sweetalert2@11"></script>
+
 
 
         <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.11.3/font/bootstrap-icons.min.css">
@@ -197,22 +198,23 @@
                             <!-- Nav Item - Alerts -->
 
 
-                            @* <div class="topbar-divider d-none d-sm-block"></div> *@
+                        @* <div class="topbar-divider d-none d-sm-block"></div> *@
                             <li class="nav-item">
-                                
+
                                 <div class="dropdown">
-                                    <button class="btn btn-secondary dropdown-toggle" type="button" id="logout-button" data-bs-toggle="dropdown" aria-expanded="false">
-                                        @* @ViewBag.AdminName *@
+                                    <button class="btn btn-secondary dropdown-toggle" type="button" id="logout-button"
+                                        data-bs-toggle="dropdown" aria-expanded="false">
+                                    @* @ViewBag.AdminName *@
                                         <i class="bi bi-person-fill" id="user-icon-nav"></i>
                                     </button>
                                     <ul class="dropdown-menu" aria-labelledby="logout-button">
                                         <li><a class="dropdown-item" data-bs-toggle="modal"
-                                        data-bs-target="#logoutModal">Cerrar sesión</a></li>
+                                                data-bs-target="#logoutModal">Cerrar sesión</a></li>
                                     </ul>
                                 </div>
                             </li>
                             <!-- Nav Item - User Information -->
-                            @* <li class="nav-item dropdown no-arrow">
+                        @* <li class="nav-item dropdown no-arrow">
                                 <a class="nav-link dropdown-toggle" href="#" id="userDropdown" role="button"
                                     data-bs-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
                                     <div class="d-flex flex-column ms-2">
@@ -265,7 +267,7 @@
         <script src="~/lib/jquery/dist/jquery.min.js"></script>
         <script src="~/lib/bootstrap/dist/js/bootstrap.bundle.min.js"></script>
         <script src="~/js/site.js" asp-append-version="true"></script>
-        
+
         <script src="https://cdn.jsdelivr.net/npm/sweetalert2@11"></script>
         <script src="https://cdn.datatables.net/v/bs5/dt-2.1.8/r-3.0.3/sc-2.4.3/sl-2.1.0/datatables.min.js"></script>
         <script src="~/js/tablas.js" asp-append-version="true"></script>

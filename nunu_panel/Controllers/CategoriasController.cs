@@ -7,7 +7,7 @@ namespace nunu_panel.Controllers;
 
 public class CategoriasController : Controller
 {
-    private static readonly string apiBaseUrl = "https://api-nunu.igrtec.net/api/";
+    private static readonly string apiBaseUrl = "https://api-nunu.igrtecapi.site/api/";
 
     private static readonly RestClientOptions options = new RestClientOptions(apiBaseUrl)
     {
@@ -60,7 +60,10 @@ public class CategoriasController : Controller
 
             Console.WriteLine("Error creando la categoría: " + response.StatusDescription);
 
-            ModelState.AddModelError(string.Empty, "No se pudo crear la nueva categoría de servicios, por favor, inténtelo más tarde.");
+            ModelState.AddModelError(
+                string.Empty,
+                "No se pudo crear la nueva categoría de servicios, por favor, inténtelo más tarde."
+            );
         }
 
         return View(model);
@@ -74,7 +77,7 @@ public class CategoriasController : Controller
         if (!response.IsSuccessStatusCode)
         {
             Console.WriteLine($"Categoría no encontrada {id}: " + response.StatusDescription);
-            
+
             return RedirectToAction("Index");
         }
 
@@ -114,7 +117,10 @@ public class CategoriasController : Controller
 
             Console.WriteLine("Error actualizando la categoría: " + response.StatusDescription);
 
-            ModelState.AddModelError(string.Empty, "No se pudo actualizar la categoría de servicios, por favor, inténtelo más tarde.");
+            ModelState.AddModelError(
+                string.Empty,
+                "No se pudo actualizar la categoría de servicios, por favor, inténtelo más tarde."
+            );
         }
 
         return View(model);

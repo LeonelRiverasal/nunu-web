@@ -1,11 +1,10 @@
+using System.Collections.Generic;
+using System.Diagnostics;
+using System.Net;
 using Microsoft.AspNetCore.Mvc;
+using Newtonsoft.Json;
 using nunu_panel.Models;
 using RestSharp;
-using Newtonsoft.Json;
-using System.Collections.Generic;
-using System.Net;
-using System.Diagnostics;
-
 
 namespace nunu_panel.Controllers
 {
@@ -18,49 +17,45 @@ namespace nunu_panel.Controllers
             _logger = logger;
         }
 
-        private static readonly string apiBaseUrl = "https://api-nunu.igrtec.net/api/";
+        private static readonly string apiBaseUrl = "https://api-nunu.igrtecapi.site/api/";
 
         public IActionResult Index()
         {
-            var adminName = HttpContext.Session.GetString("AdminName");    
+            var adminName = HttpContext.Session.GetString("AdminName");
             ViewBag.AdminName = adminName;
             var usuarios = GetUsuarios();
             return View(usuarios);
-
         }
-        
+
         [HttpDelete]
-    public IActionResult EliminarUsuario(int idUsuario)
-    {
-        var options = new RestClientOptions(apiBaseUrl)
+        public IActionResult EliminarUsuario(int idUsuario)
         {
-            MaxTimeout = -1
-        };
+            var options = new RestClientOptions(apiBaseUrl) { MaxTimeout = -1 };
 
-        var client = new RestClient(options);
-        var request = new RestRequest($"/Usuarios/{idUsuario}", Method.Delete);
-        var response = client.Execute(request);
+            var client = new RestClient(options);
+            var request = new RestRequest($"/Usuarios/{idUsuario}", Method.Delete);
+            var response = client.Execute(request);
 
-        if (response.StatusCode == HttpStatusCode.NoContent)
-        {
-            string? content = response.Content;
-            TempData["SuccessMensajeUsuario"] = content != null ? $"¡Usuario {idUsuario} eliminado con éxito!" : null;
-            return Json(new { success = true, message = TempData["SuccessMensajeUsuario"] });
+            if (response.StatusCode == HttpStatusCode.NoContent)
+            {
+                string? content = response.Content;
+                TempData["SuccessMensajeUsuario"] =
+                    content != null ? $"¡Usuario {idUsuario} eliminado con éxito!" : null;
+                return Json(new { success = true, message = TempData["SuccessMensajeUsuario"] });
+            }
+            else
+            {
+                TempData["ErrorMensajeUsuario"] =
+                    $"Error al eliminar el usuario desde la API. {response.StatusCode}";
+                return Json(new { success = false, message = TempData["ErrorMensajeUsuario"] });
+            }
         }
-        else
-        {
-            TempData["ErrorMensajeUsuario"] = $"Error al eliminar el usuario desde la API. {response.StatusCode}";
-            return Json(new { success = false, message = TempData["ErrorMensajeUsuario"] });
-        }
-    }
+
         public List<UsuarioModel>? GetUsuarios()
         {
             try
             {
-                var options = new RestSharp.RestClientOptions(apiBaseUrl)
-                {
-                    MaxTimeout = -1
-                };
+                var options = new RestSharp.RestClientOptions(apiBaseUrl) { MaxTimeout = -1 };
 
                 var client = new RestSharp.RestClient(options);
                 var request = new RestSharp.RestRequest("/Usuarios", Method.Get);
@@ -68,7 +63,9 @@ namespace nunu_panel.Controllers
                 if (response.StatusCode == HttpStatusCode.OK)
                 {
                     string? content = response.Content;
-                    List<UsuarioModel>? usuarios = JsonConvert.DeserializeObject<List<UsuarioModel>>(content);
+                    List<UsuarioModel>? usuarios = JsonConvert.DeserializeObject<
+                        List<UsuarioModel>
+                    >(content);
                     return usuarios;
                 }
                 else
@@ -81,6 +78,7 @@ namespace nunu_panel.Controllers
                 return null;
             }
         }
+
         public IActionResult Historial()
         {
             return View();
@@ -94,7 +92,12 @@ namespace nunu_panel.Controllers
         [ResponseCache(Duration = 0, Location = ResponseCacheLocation.None, NoStore = true)]
         public IActionResult Error()
         {
-            return View(new ErrorViewModel { RequestId = Activity.Current?.Id ?? HttpContext.TraceIdentifier });
+            return View(
+                new ErrorViewModel
+                {
+                    RequestId = Activity.Current?.Id ?? HttpContext.TraceIdentifier
+                }
+            );
         }
     }
 }

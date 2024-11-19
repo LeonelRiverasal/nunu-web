@@ -12,7 +12,7 @@ namespace nunu_panel.Controllers
     public class ProveedoresController : Controller
     {
         private readonly ILogger<ProveedoresController> _logger;
-        private static readonly string apiBaseUrl = "https://api-nunu.igrtec.net/api/";
+        private static readonly string apiBaseUrl = "https://api-nunu.igrtecapi.site/api/";
 
         public ProveedoresController(ILogger<ProveedoresController> logger)
         {
@@ -67,9 +67,33 @@ namespace nunu_panel.Controllers
 
             if (response.StatusCode == HttpStatusCode.OK)
             {
-                return Json(
-                    new { success = true, message = $"Proveedor {idProveedor} Aprovado con exito" }
+                //verificar documentacion con strapi
+                var strapiINE = new RestRequest(
+                    $"/Proveedores/VerificarDocumentacionProveedor/{idProveedor}",
+                    Method.Post
                 );
+                var strapiINEResponse = client.Execute(strapiINE);
+                if (strapiINEResponse.StatusCode == HttpStatusCode.OK)
+                {
+                    return Json(
+                        new
+                        {
+                            success = true,
+                            message = $"Proveedor {idProveedor} Aprobado con éxito"
+                        }
+                    );
+                }
+                else
+                {
+                    return Json(
+                        new
+                        {
+                            success = false,
+                            message = "Error al aprobar el proveedor:{0}",
+                            strapiINEResponse.Content
+                        }
+                    );
+                }
             }
             else
             {
