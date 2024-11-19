@@ -1,60 +1,7 @@
 {
   "Version": 1,
   "WorkspaceRootPath": "C:\\Users\\Despliegue\\Documents\\GitHub\\nunu-web\\",
-  "Documents": [
-    {
-      "AbsoluteMoniker": "D:0:0:{C7C69CCB-3620-43D1-B95E-9B5C450EDD14}|nunu_panel\\nunu_panel.csproj|c:\\users\\despliegue\\documents\\github\\nunu-web\\nunu_panel\\controllers\\usuarioscontroller.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
-      "RelativeMoniker": "D:0:0:{C7C69CCB-3620-43D1-B95E-9B5C450EDD14}|nunu_panel\\nunu_panel.csproj|solutionrelative:nunu_panel\\controllers\\usuarioscontroller.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
-    },
-    {
-      "AbsoluteMoniker": "D:0:0:{C7C69CCB-3620-43D1-B95E-9B5C450EDD14}|nunu_panel\\nunu_panel.csproj|c:\\users\\despliegue\\documents\\github\\nunu-web\\nunu_panel\\controllers\\suscripcionescontroller.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
-      "RelativeMoniker": "D:0:0:{C7C69CCB-3620-43D1-B95E-9B5C450EDD14}|nunu_panel\\nunu_panel.csproj|solutionrelative:nunu_panel\\controllers\\suscripcionescontroller.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
-    },
-    {
-      "AbsoluteMoniker": "D:0:0:{C7C69CCB-3620-43D1-B95E-9B5C450EDD14}|nunu_panel\\nunu_panel.csproj|c:\\users\\despliegue\\documents\\github\\nunu-web\\nunu_panel\\controllers\\servicioscontroller.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
-      "RelativeMoniker": "D:0:0:{C7C69CCB-3620-43D1-B95E-9B5C450EDD14}|nunu_panel\\nunu_panel.csproj|solutionrelative:nunu_panel\\controllers\\servicioscontroller.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
-    },
-    {
-      "AbsoluteMoniker": "D:0:0:{C7C69CCB-3620-43D1-B95E-9B5C450EDD14}|nunu_panel\\nunu_panel.csproj|c:\\users\\despliegue\\documents\\github\\nunu-web\\nunu_panel\\controllers\\reportescontroller.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
-      "RelativeMoniker": "D:0:0:{C7C69CCB-3620-43D1-B95E-9B5C450EDD14}|nunu_panel\\nunu_panel.csproj|solutionrelative:nunu_panel\\controllers\\reportescontroller.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
-    },
-    {
-      "AbsoluteMoniker": "D:0:0:{C7C69CCB-3620-43D1-B95E-9B5C450EDD14}|nunu_panel\\nunu_panel.csproj|c:\\users\\despliegue\\documents\\github\\nunu-web\\nunu_panel\\controllers\\publicidadcontroller.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
-      "RelativeMoniker": "D:0:0:{C7C69CCB-3620-43D1-B95E-9B5C450EDD14}|nunu_panel\\nunu_panel.csproj|solutionrelative:nunu_panel\\controllers\\publicidadcontroller.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
-    },
-    {
-      "AbsoluteMoniker": "D:0:0:{C7C69CCB-3620-43D1-B95E-9B5C450EDD14}|nunu_panel\\nunu_panel.csproj|c:\\users\\despliegue\\documents\\github\\nunu-web\\nunu_panel\\controllers\\proveedorescontroller.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
-      "RelativeMoniker": "D:0:0:{C7C69CCB-3620-43D1-B95E-9B5C450EDD14}|nunu_panel\\nunu_panel.csproj|solutionrelative:nunu_panel\\controllers\\proveedorescontroller.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
-    },
-    {
-      "AbsoluteMoniker": "D:0:0:{C7C69CCB-3620-43D1-B95E-9B5C450EDD14}|nunu_panel\\nunu_panel.csproj|c:\\users\\despliegue\\documents\\github\\nunu-web\\nunu_panel\\controllers\\pedidoscontroller.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
-      "RelativeMoniker": "D:0:0:{C7C69CCB-3620-43D1-B95E-9B5C450EDD14}|nunu_panel\\nunu_panel.csproj|solutionrelative:nunu_panel\\controllers\\pedidoscontroller.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
-    },
-    {
-      "AbsoluteMoniker": "D:0:0:{C7C69CCB-3620-43D1-B95E-9B5C450EDD14}|nunu_panel\\nunu_panel.csproj|c:\\users\\despliegue\\documents\\github\\nunu-web\\nunu_panel\\controllers\\pagoscontroller.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
-      "RelativeMoniker": "D:0:0:{C7C69CCB-3620-43D1-B95E-9B5C450EDD14}|nunu_panel\\nunu_panel.csproj|solutionrelative:nunu_panel\\controllers\\pagoscontroller.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
-    },
-    {
-      "AbsoluteMoniker": "D:0:0:{C7C69CCB-3620-43D1-B95E-9B5C450EDD14}|nunu_panel\\nunu_panel.csproj|c:\\users\\despliegue\\documents\\github\\nunu-web\\nunu_panel\\controllers\\logincontroller.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
-      "RelativeMoniker": "D:0:0:{C7C69CCB-3620-43D1-B95E-9B5C450EDD14}|nunu_panel\\nunu_panel.csproj|solutionrelative:nunu_panel\\controllers\\logincontroller.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
-    },
-    {
-      "AbsoluteMoniker": "D:0:0:{C7C69CCB-3620-43D1-B95E-9B5C450EDD14}|nunu_panel\\nunu_panel.csproj|c:\\users\\despliegue\\documents\\github\\nunu-web\\nunu_panel\\controllers\\homecontroller.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
-      "RelativeMoniker": "D:0:0:{C7C69CCB-3620-43D1-B95E-9B5C450EDD14}|nunu_panel\\nunu_panel.csproj|solutionrelative:nunu_panel\\controllers\\homecontroller.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
-    },
-    {
-      "AbsoluteMoniker": "D:0:0:{C7C69CCB-3620-43D1-B95E-9B5C450EDD14}|nunu_panel\\nunu_panel.csproj|c:\\users\\despliegue\\documents\\github\\nunu-web\\nunu_panel\\controllers\\categoriascontroller.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
-      "RelativeMoniker": "D:0:0:{C7C69CCB-3620-43D1-B95E-9B5C450EDD14}|nunu_panel\\nunu_panel.csproj|solutionrelative:nunu_panel\\controllers\\categoriascontroller.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
-    },
-    {
-      "AbsoluteMoniker": "D:0:0:{C7C69CCB-3620-43D1-B95E-9B5C450EDD14}|nunu_panel\\nunu_panel.csproj|c:\\users\\despliegue\\documents\\github\\nunu-web\\nunu_panel\\controllers\\anuncioscontroller.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
-      "RelativeMoniker": "D:0:0:{C7C69CCB-3620-43D1-B95E-9B5C450EDD14}|nunu_panel\\nunu_panel.csproj|solutionrelative:nunu_panel\\controllers\\anuncioscontroller.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
-    },
-    {
-      "AbsoluteMoniker": "D:0:0:{C7C69CCB-3620-43D1-B95E-9B5C450EDD14}|nunu_panel\\nunu_panel.csproj|c:\\users\\despliegue\\documents\\github\\nunu-web\\nunu_panel\\views\\login\\index.cshtml||{40D31677-CBC0-4297-A9EF-89D907823A98}",
-      "RelativeMoniker": "D:0:0:{C7C69CCB-3620-43D1-B95E-9B5C450EDD14}|nunu_panel\\nunu_panel.csproj|solutionrelative:nunu_panel\\views\\login\\index.cshtml||{40D31677-CBC0-4297-A9EF-89D907823A98}"
-    }
-  ],
+  "Documents": [],
   "DocumentGroupContainers": [
     {
       "Orientation": 0,
@@ -62,7 +9,7 @@
       "DocumentGroups": [
         {
           "DockedWidth": 494,
-          "SelectedChildIndex": 14,
+          "SelectedChildIndex": -1,
           "Children": [
             {
               "$type": "Bookmark",
@@ -121,165 +68,8 @@
               "Name": "ST:0:0:{3ae79031-e1bc-11d0-8f78-00a0c9110057}"
             },
             {
-              "$type": "Document",
-              "DocumentIndex": 0,
-              "Title": "UsuariosController.cs",
-              "DocumentMoniker": "C:\\Users\\Despliegue\\Documents\\GitHub\\nunu-web\\nunu_panel\\Controllers\\UsuariosController.cs",
-              "RelativeDocumentMoniker": "nunu_panel\\Controllers\\UsuariosController.cs",
-              "ToolTip": "C:\\Users\\Despliegue\\Documents\\GitHub\\nunu-web\\nunu_panel\\Controllers\\UsuariosController.cs",
-              "RelativeToolTip": "nunu_panel\\Controllers\\UsuariosController.cs",
-              "ViewState": "AQIAAAAAAAAAAAAAAAAAABQAAABVAAAA",
-              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
-              "WhenOpened": "2024-10-27T16:31:22.092Z",
-              "EditorCaption": ""
-            },
-            {
-              "$type": "Document",
-              "DocumentIndex": 1,
-              "Title": "SuscripcionesController.cs",
-              "DocumentMoniker": "C:\\Users\\Despliegue\\Documents\\GitHub\\nunu-web\\nunu_panel\\Controllers\\SuscripcionesController.cs",
-              "RelativeDocumentMoniker": "nunu_panel\\Controllers\\SuscripcionesController.cs",
-              "ToolTip": "C:\\Users\\Despliegue\\Documents\\GitHub\\nunu-web\\nunu_panel\\Controllers\\SuscripcionesController.cs",
-              "RelativeToolTip": "nunu_panel\\Controllers\\SuscripcionesController.cs",
-              "ViewState": "AQIAAAAAAAAAAAAAAAAAAAAAAAAAAAAA",
-              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
-              "WhenOpened": "2024-10-27T16:31:20.113Z"
-            },
-            {
-              "$type": "Document",
-              "DocumentIndex": 2,
-              "Title": "ServiciosController.cs",
-              "DocumentMoniker": "C:\\Users\\Despliegue\\Documents\\GitHub\\nunu-web\\nunu_panel\\Controllers\\ServiciosController.cs",
-              "RelativeDocumentMoniker": "nunu_panel\\Controllers\\ServiciosController.cs",
-              "ToolTip": "C:\\Users\\Despliegue\\Documents\\GitHub\\nunu-web\\nunu_panel\\Controllers\\ServiciosController.cs",
-              "RelativeToolTip": "nunu_panel\\Controllers\\ServiciosController.cs",
-              "ViewState": "AQIAAAAAAAAAAAAAAAAAAA4AAABVAAAA",
-              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
-              "WhenOpened": "2024-10-27T16:31:13.747Z"
-            },
-            {
-              "$type": "Document",
-              "DocumentIndex": 3,
-              "Title": "ReportesController.cs",
-              "DocumentMoniker": "C:\\Users\\Despliegue\\Documents\\GitHub\\nunu-web\\nunu_panel\\Controllers\\ReportesController.cs",
-              "RelativeDocumentMoniker": "nunu_panel\\Controllers\\ReportesController.cs",
-              "ToolTip": "C:\\Users\\Despliegue\\Documents\\GitHub\\nunu-web\\nunu_panel\\Controllers\\ReportesController.cs",
-              "RelativeToolTip": "nunu_panel\\Controllers\\ReportesController.cs",
-              "ViewState": "AQIAAAAAAAAAAAAAAAAAAAAAAAAAAAAA",
-              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
-              "WhenOpened": "2024-10-27T16:31:12.198Z"
-            },
-            {
-              "$type": "Document",
-              "DocumentIndex": 4,
-              "Title": "PublicidadController.cs",
-              "DocumentMoniker": "C:\\Users\\Despliegue\\Documents\\GitHub\\nunu-web\\nunu_panel\\Controllers\\PublicidadController.cs",
-              "RelativeDocumentMoniker": "nunu_panel\\Controllers\\PublicidadController.cs",
-              "ToolTip": "C:\\Users\\Despliegue\\Documents\\GitHub\\nunu-web\\nunu_panel\\Controllers\\PublicidadController.cs",
-              "RelativeToolTip": "nunu_panel\\Controllers\\PublicidadController.cs",
-              "ViewState": "AQIAABIAAAAAAAAAAAAowAAAAAAAAAAA",
-              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
-              "WhenOpened": "2024-10-27T16:31:09.698Z"
-            },
-            {
-              "$type": "Document",
-              "DocumentIndex": 5,
-              "Title": "ProveedoresController.cs",
-              "DocumentMoniker": "C:\\Users\\Despliegue\\Documents\\GitHub\\nunu-web\\nunu_panel\\Controllers\\ProveedoresController.cs",
-              "RelativeDocumentMoniker": "nunu_panel\\Controllers\\ProveedoresController.cs",
-              "ToolTip": "C:\\Users\\Despliegue\\Documents\\GitHub\\nunu-web\\nunu_panel\\Controllers\\ProveedoresController.cs",
-              "RelativeToolTip": "nunu_panel\\Controllers\\ProveedoresController.cs",
-              "ViewState": "AQIAAAAAAAAAAAAAAAAAAA4AAABVAAAA",
-              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
-              "WhenOpened": "2024-10-27T16:28:58.991Z"
-            },
-            {
-              "$type": "Document",
-              "DocumentIndex": 6,
-              "Title": "PedidosController.cs",
-              "DocumentMoniker": "C:\\Users\\Despliegue\\Documents\\GitHub\\nunu-web\\nunu_panel\\Controllers\\PedidosController.cs",
-              "RelativeDocumentMoniker": "nunu_panel\\Controllers\\PedidosController.cs",
-              "ToolTip": "C:\\Users\\Despliegue\\Documents\\GitHub\\nunu-web\\nunu_panel\\Controllers\\PedidosController.cs",
-              "RelativeToolTip": "nunu_panel\\Controllers\\PedidosController.cs",
-              "ViewState": "AQIAACAAAAAAAAAAAAAAAAAAAAAAAAAA",
-              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
-              "WhenOpened": "2024-10-27T16:28:56.175Z"
-            },
-            {
-              "$type": "Document",
-              "DocumentIndex": 7,
-              "Title": "PagosController.cs",
-              "DocumentMoniker": "C:\\Users\\Despliegue\\Documents\\GitHub\\nunu-web\\nunu_panel\\Controllers\\PagosController.cs",
-              "RelativeDocumentMoniker": "nunu_panel\\Controllers\\PagosController.cs",
-              "ToolTip": "C:\\Users\\Despliegue\\Documents\\GitHub\\nunu-web\\nunu_panel\\Controllers\\PagosController.cs",
-              "RelativeToolTip": "nunu_panel\\Controllers\\PagosController.cs",
-              "ViewState": "AQIAACQAAAAAAAAAAAAAAAAAAAAAAAAA",
-              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
-              "WhenOpened": "2024-10-27T16:28:45.694Z"
-            },
-            {
-              "$type": "Document",
-              "DocumentIndex": 9,
-              "Title": "HomeController.cs",
-              "DocumentMoniker": "C:\\Users\\Despliegue\\Documents\\GitHub\\nunu-web\\nunu_panel\\Controllers\\HomeController.cs",
-              "RelativeDocumentMoniker": "nunu_panel\\Controllers\\HomeController.cs",
-              "ToolTip": "C:\\Users\\Despliegue\\Documents\\GitHub\\nunu-web\\nunu_panel\\Controllers\\HomeController.cs",
-              "RelativeToolTip": "nunu_panel\\Controllers\\HomeController.cs",
-              "ViewState": "AQIAAAAAAAAAAAAAAAAAABIAAABVAAAA",
-              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
-              "WhenOpened": "2024-10-27T16:24:42.162Z"
-            },
-            {
-              "$type": "Document",
-              "DocumentIndex": 10,
-              "Title": "CategoriasController.cs",
-              "DocumentMoniker": "C:\\Users\\Despliegue\\Documents\\GitHub\\nunu-web\\nunu_panel\\Controllers\\CategoriasController.cs",
-              "RelativeDocumentMoniker": "nunu_panel\\Controllers\\CategoriasController.cs",
-              "ToolTip": "C:\\Users\\Despliegue\\Documents\\GitHub\\nunu-web\\nunu_panel\\Controllers\\CategoriasController.cs",
-              "RelativeToolTip": "nunu_panel\\Controllers\\CategoriasController.cs",
-              "ViewState": "AQIAAAAAAAAAAAAAAAAAAAkAAABRAAAA",
-              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
-              "WhenOpened": "2024-10-27T16:24:34.654Z"
-            },
-            {
-              "$type": "Document",
-              "DocumentIndex": 11,
-              "Title": "AnunciosController.cs",
-              "DocumentMoniker": "C:\\Users\\Despliegue\\Documents\\GitHub\\nunu-web\\nunu_panel\\Controllers\\AnunciosController.cs",
-              "RelativeDocumentMoniker": "nunu_panel\\Controllers\\AnunciosController.cs",
-              "ToolTip": "C:\\Users\\Despliegue\\Documents\\GitHub\\nunu-web\\nunu_panel\\Controllers\\AnunciosController.cs",
-              "RelativeToolTip": "nunu_panel\\Controllers\\AnunciosController.cs",
-              "ViewState": "AQIAAAAAAAAAAAAAAAAAABMAAABVAAAA",
-              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
-              "WhenOpened": "2024-10-27T16:24:28.352Z"
-            },
-            {
-              "$type": "Document",
-              "DocumentIndex": 8,
-              "Title": "LoginController.cs",
-              "DocumentMoniker": "C:\\Users\\Despliegue\\Documents\\GitHub\\nunu-web\\nunu_panel\\Controllers\\LoginController.cs",
-              "RelativeDocumentMoniker": "nunu_panel\\Controllers\\LoginController.cs",
-              "ToolTip": "C:\\Users\\Despliegue\\Documents\\GitHub\\nunu-web\\nunu_panel\\Controllers\\LoginController.cs",
-              "RelativeToolTip": "nunu_panel\\Controllers\\LoginController.cs",
-              "ViewState": "AQIAAAAAAAAAAAAAAAAAABAAAABVAAAA",
-              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
-              "WhenOpened": "2024-10-21T20:00:50.479Z"
-            },
-            {
               "$type": "Bookmark",
               "Name": "ST:0:0:{1c4feeaa-4718-4aa9-859d-94ce25d182ba}"
-            },
-            {
-              "$type": "Document",
-              "DocumentIndex": 12,
-              "Title": "index.cshtml",
-              "DocumentMoniker": "C:\\Users\\Despliegue\\Documents\\GitHub\\nunu-web\\nunu_panel\\Views\\Login\\index.cshtml",
-              "RelativeDocumentMoniker": "nunu_panel\\Views\\Login\\index.cshtml",
-              "ToolTip": "C:\\Users\\Despliegue\\Documents\\GitHub\\nunu-web\\nunu_panel\\Views\\Login\\index.cshtml",
-              "RelativeToolTip": "nunu_panel\\Views\\Login\\index.cshtml",
-              "ViewState": "AQIAADYAAAAAAAAAAAAAAA4AAAAAAAAA",
-              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000759|",
-              "WhenOpened": "2024-10-21T20:02:23.114Z"
             }
           ]
         }
