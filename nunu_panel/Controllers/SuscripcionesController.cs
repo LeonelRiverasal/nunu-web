@@ -30,7 +30,7 @@ namespace nunu_panel.Controllers
             return View();
         }
 
-        private static readonly string apiBaseUrl = "https://api-nunu.igrtecapi.site/api/";
+        private static readonly string apiBaseUrl = "https://api-nunu.igrtec.net/api/";
 
         public List<SuscripcionesModel>? GetSuscripciones()
         {

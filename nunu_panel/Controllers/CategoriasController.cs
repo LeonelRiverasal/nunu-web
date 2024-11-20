@@ -7,7 +7,7 @@ namespace nunu_panel.Controllers;
 
 public class CategoriasController : Controller
 {
-    private static readonly string apiBaseUrl = "https://api-nunu.igrtecapi.site/api/";
+    private static readonly string apiBaseUrl = "https://api-nunu.igrtec.net/api/";
 
     private static readonly RestClientOptions options = new RestClientOptions(apiBaseUrl)
     {
