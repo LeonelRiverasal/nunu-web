@@ -7,7 +7,7 @@
     <div class="row mb-3">
         <div class="col-md-12">
             <div class="form-group">
-                <input type="text" name="" id="textoLibre" class="form-control" placeholder="Busca por servicio">
+                <input type="text" name="" id="searchInput" class="form-control" placeholder="Busca por servicio">
             </div>
             @* <form asp-controller="Servicios" asp-action="Index">
                 <div class="groupSearch">
@@ -270,10 +270,10 @@
     });
 </script>
 
-@section Scripts{
-    
-<script>
-    inicializarTable('#dataTable');
-    filtrar('#dataTable','','','','','')
-</script>
+@section Scripts {
+
+    <script>
+        inicializarTable('#dataTable');
+        filtrar('#dataTable', '', '', '', '', '')
+    </script>
 }

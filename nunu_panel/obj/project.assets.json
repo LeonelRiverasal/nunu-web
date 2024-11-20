@@ -99,11 +99,11 @@
   "project": {
     "version": "1.0.0",
     "restore": {
-      "projectUniqueName": "d:\\Github\\nunu-web\\nunu_panel\\nunu_panel.csproj",
+      "projectUniqueName": "D:\\Github\\nunu-web\\nunu_panel\\nunu_panel.csproj",
       "projectName": "nunu_panel",
-      "projectPath": "d:\\Github\\nunu-web\\nunu_panel\\nunu_panel.csproj",
+      "projectPath": "D:\\Github\\nunu-web\\nunu_panel\\nunu_panel.csproj",
       "packagesPath": "C:\\Users\\linse\\.nuget\\packages\\",
-      "outputPath": "d:\\Github\\nunu-web\\nunu_panel\\obj\\",
+      "outputPath": "D:\\Github\\nunu-web\\nunu_panel\\obj\\",
       "projectStyle": "PackageReference",
       "configFilePaths": [
         "C:\\Users\\linse\\AppData\\Roaming\\NuGet\\NuGet.Config",
