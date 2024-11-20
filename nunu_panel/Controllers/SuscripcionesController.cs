@@ -79,7 +79,7 @@ namespace nunu_panel.Controllers
             }
             catch
             {
-                return false;
+                return true;
             }
         }
 

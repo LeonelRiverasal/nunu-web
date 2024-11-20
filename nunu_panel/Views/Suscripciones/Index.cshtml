@@ -216,7 +216,6 @@
         var curriculum = button.getAttribute('data-curriculum');
         var comprobanteDomicilio = button.getAttribute('data-comprobante-domicilio');
         filterModal.querySelector('input[placeholder="idder"]').value = id;
-        filterModal.querySelector('input[placeholder="ANTECEDENTES"]').value = antecedentes;
         filterModal.querySelector('input[placeholder="INE FRENTE"]').value = ineFrente;
         filterModal.querySelector('input[placeholder="INE DETRAS"]').value = ineReverso;
         filterModal.querySelector('input[placeholder="Curriculum"]').value = curriculum;
@@ -273,7 +272,6 @@
             method: 'PUT',
             headers: {
                 'Content-Type': 'application/json',
-                'X-CSRF-TOKEN': document.querySelector('input[name="__RequestVerificationToken"]').value
             }
         })
             .then(response => response.json())
