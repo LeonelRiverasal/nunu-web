@@ -370,7 +370,7 @@
                 'Content-Type': 'application/json',
             }
         })
-            .then(response => response.json())
+            .then(response => response.ok ? response.json() : Promise.reject(response))
             .then(data => {
                 Swal.close();
                 if (data && data.success) {
@@ -379,11 +379,9 @@
                     const modalMessage = document.getElementById('modalMessage');
                     $('#successModal').modal('show');
                     modalMessage.innerText = data.message;
-                } else {
-                    alert(data.message);
-                }
+                } 
             })
-            .catch(error => console.error('Error:', error));
+            .catch(error =>  alert(data.message));
     });
 </script>
 

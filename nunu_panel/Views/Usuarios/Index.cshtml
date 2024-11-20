@@ -234,26 +234,38 @@
                     'Content-Type': 'application/json'
                 }
             })
-                .then(response => response.json())
+                .then(response => {
+                    if (!response.ok) {
+                        throw new Error('Error al eliminar el usuario. Código de estado: ' + response.status);
+                    }
+                    return response.json();
+                })
                 .then(data => {
                     if (data) {
                         document.querySelector(`a[data-id="${userIdToDelete}"]`).closest('tr').remove();
                         deleteUserModal.hide();
-                        const modalMessage = document.getElementById('modalMessage');
                         Swal.fire({
                             icon: 'success',
                             title: 'Usuario eliminado',
                             text: 'El usuario ha sido eliminado exitosamente.',
-                        })
+                        });
                         setTimeout(() => {
                             window.location.reload();
-                        }, 500)
-                    } else {
-                        alert(data.message);
+                        }, 500);
                     }
                 })
-                .catch(error => console.error('Error:', error));
+                .catch(error => {
+                    // Muestra el error de forma más clara
+                    Swal.fire({
+                        icon: 'error',
+                        title: 'Error',
+                        text: error.message,
+                    });
+                }).finally(() => {
+                    deleteUserModal.hide();
+                });
         });
+
     });
 </script>
 @section Scripts {

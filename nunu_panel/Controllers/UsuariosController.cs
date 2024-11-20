@@ -41,14 +41,15 @@ namespace nunu_panel.Controllers
                 string? content = response.Content;
                 TempData["SuccessMensajeUsuario"] =
                     content != null ? $"¡Usuario {idUsuario} eliminado con éxito!" : null;
-                return Json(new { success = true, message = TempData["SuccessMensajeUsuario"] });
+                return Ok(new { success = true, message = TempData["SuccessMensajeUsuario"] });
             }
-            else
-            {
-                TempData["ErrorMensajeUsuario"] =
-                    $"Error al eliminar el usuario desde la API. {response.StatusCode}";
-                return Json(new { success = false, message = TempData["ErrorMensajeUsuario"] });
-            }
+
+            TempData["ErrorMensajeUsuario"] =
+                $"Error al eliminar el usuario desde la API. {response.StatusCode}";
+            return StatusCode(
+                (int)response.StatusCode,
+                new { success = false, message = TempData["ErrorEliminarUsuario"] }
+            );
         }
 
         public List<UsuarioModel>? GetUsuarios()
