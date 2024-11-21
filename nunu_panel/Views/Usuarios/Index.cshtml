@@ -228,6 +228,14 @@
         });
 
         confirmDeleteButton.addEventListener('click', function () {
+            Swal.fire({
+                title: 'Eliminando',
+                allowOutsideClick: false,
+                allowEscapeKey: false,
+                didOpen: () => {
+                    Swal.showLoading();
+                }
+            })
             fetch(`/Usuarios/EliminarUsuario?idUsuario=${userIdToDelete}`, {
                 method: 'DELETE',
                 headers: {
@@ -262,6 +270,7 @@
                         text: error.message,
                     });
                 }).finally(() => {
+                    Swal.close();
                     deleteUserModal.hide();
                 });
         });

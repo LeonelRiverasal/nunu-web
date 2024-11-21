@@ -323,6 +323,14 @@
     });
 
     confirmDeleteButton.addEventListener('click', function () {
+        Swal.fire({
+            title: 'Eliminando proveedor',
+            allowOutsideClick: false,
+            allowEscapeKey: false,
+            didOpen: () => {
+                Swal.showLoading();
+            }
+        })
         fetch(`/Proveedores/EliminarProveedor?idProveedor=${userIdToDelete}`, {
             method: 'DELETE',
             headers: {
@@ -344,7 +352,7 @@
                     alert(data.message);
                 }
             })
-            .catch(error => console.error('Error:', error));
+            .catch(error => console.error('Error:', error)).finally(() => Swal.close());
     });
     document.querySelectorAll('[data-bs-toggle="modal"]').forEach(function (button) {
         button.addEventListener('click', function () {

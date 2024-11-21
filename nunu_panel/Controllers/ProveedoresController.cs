@@ -24,7 +24,7 @@ namespace nunu_panel.Controllers
             var adminName = HttpContext.Session.GetString("AdminName");
             ViewBag.AdminName = adminName;
             var proveedores = GetProveedores();
-            return View(proveedores);
+            return View(proveedores?.OrderByDescending(p => p.id_proveedor).ToList());
         }
 
         [HttpDelete]
