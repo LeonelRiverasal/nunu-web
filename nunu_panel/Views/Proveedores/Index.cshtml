@@ -62,6 +62,8 @@
                     <th scope="col" class="">Documentos</th>
                     <th scope="col" class="">Teléfono</th>
                     <th scope="col" class="">Fecha de registro</th>
+                    <th scope="col" class="">Pausado</th>
+                    <th scope="col" class="">Motivo</th>
                     <th scope="col" class=""></th>
                 </tr>
             </thead>
@@ -93,6 +95,8 @@
                         </td>
                         <td class="td-middle">@proveedor.telefono</td>
                         <td class="td-middle">@proveedor.fecha_registro.ToString("dd/MM/yyyy")</td>
+                        <td class="td-middle">@(proveedor.suspendido ? "Si" : "No")</td>
+                        <td class="td-middle">@(proveedor.suspendido ? proveedor.motivoSuspension : "")</td>
                         <td class="td-end">
                             <div class="dropdown">
                                 <button class="btn dropdown-toggle text-dark" type="button" id="dropdownMenuButton1"
@@ -102,6 +106,13 @@
                                 <div class="dropdown-menu" aria-labelledby="dropdownMenuButton1">
                                     <a class="dropdown-item" data-bs-toggle="modal" data-bs-target="#deleteUserModal"
                                         data-id="@proveedor.id_proveedor" data-name="@proveedor.nombre_razon_social">Dar de baja</a>
+                                    @if(!proveedor.suspendido){
+                                        <a class="dropdown-item" data-bs-toggle="modal" data-bs-target="#leftModal"
+                                        data-id="@proveedor.id_proveedor" data-name="@proveedor.nombre_razon_social">Pausar proveedor</a>
+                                    }else{
+                                        <a class="dropdown-item" data-bs-toggle="modal" data-bs-target="#rightModal"
+                                        data-id="@proveedor.id_proveedor" data-name="@proveedor.nombre_razon_social">Reactivar proveedor</a>
+                                    }
                                 </div>
                             </div>
                         </td>
@@ -200,7 +211,8 @@
                 <hr>
                 <button class="btn btn-success w-100" data-id="" data-bs-toggle="modalDocumentos"
                     data-bs-dismiss="modal" id="aprovarProveedor">Aprobar</button>
-                <button class="btn btn-primary w-100 mt-2" data-bs-dismiss="modal">Cerrar</button>
+                    <button class="btn btn-danger w-100 mt-2"data-bs-toggle="modal"  data-bs-target="#RejectModal" id="rechazarProveedor">Rechazar</button>
+                <button class="btn btn-primary w-100 mt-2" data-bs-dismiss="modal"  data-bs-dismiss="modal">Cerrar</button>
             </div>
         </div>
     </div>
@@ -223,6 +235,70 @@
         </div>
     </div>
 </div>
+
+@* Pausar proveedor Modal*@
+<div class="modal fade" id="leftModal" tabindex="-1" aria-labelledby="leftModalLabel" aria-hidden="true">
+    <div class="modal-dialog">
+        <div class="modal-content">
+            <div class="modal-header">
+                <h5 class="modal-title" id="leftModalLabel">Pausar proveedor</h5>
+                <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+            </div>
+            <div class="modal-body">
+                <div>
+                    <p>Para pausar a este proveedor, ingrese la razón de la pausa:</p>
+                    <textarea class="form-control" id="leftReason" rows="4"></textarea>
+                </div>
+            </div>
+            <div class="modal-footer">
+                <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Cancelar</button>
+                <button type="button" class="btn btn-danger" id="confirmLeftButton">Pausar</button>
+            </div>
+        </div>
+    </div>
+</div>
+
+@* Reactivar proveedor Modal *@
+<div class="modal fade" id="rightModal" tabindex="-1" aria-labelledby="rightModalLabel" aria-hidden="true">
+    <div class="modal-dialog">
+        <div class="modal-content"> 
+            <div class="modal-header">
+                <h5 class="modal-title" id="rightModalLabel">Reactivar proveedor</h5>
+                <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+            </div>  
+            <div class="modal-body">
+                <p>¿Estás seguro que deseas reactivar a este proveedor?</p>
+            </div>
+            <div class="modal-footer">
+                <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Cancelar</button>
+                <button type="button" class="btn btn-success" id="confirmRightButton">Reactivar</button>
+            </div>
+        </div>
+    </div>
+</div>  
+
+@* Rechazar proveedor Modal *@
+<div class="modal fade" id="RejectModal" tabindex="-1" aria-labelledby="RejectModalLabel" aria-hidden="true">
+    <div class="modal-dialog">
+        <div class="modal-content">
+            <div class="modal-header">
+                <h5 class="modal-title" id="RejectModalLabel">Rechazar proveedor</h5>
+                <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+            </div>
+            <div class="modal-body">
+                <div>
+                    <p>Para rechazar a este proveedor, ingrese la razón del rechazo:</p>
+                    <textarea class="form-control" id="rejectReason" rows="4"></textarea>
+                </div>
+            </div>
+            <div class="modal-footer">
+                <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Cancelar</button>
+                <button type="button" class="btn btn-danger" id="confirmRejectButton">Rechazar</button>
+            </div>
+        </div>
+    </div>
+</div>
+
 <script src="https://code.jquery.com/jquery-3.5.1.min.js"></script>
 <script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.16.0/umd/popper.min.js"></script>
 <script src="https://maxcdn.bootstrapcdn.com/bootstrap/4.5.2/js/bootstrap.min.js"></script>
@@ -265,10 +341,13 @@
         filterModal.querySelector('input[placeholder="Curriculum"]').value = curriculum;
         filterModal.querySelector('input[placeholder="Comprobante de domicilio"]').value = comprobanteDomicilio;
         aprovarProveedor.textContent = isApproved === "True" ? "Ya Aprobado" : "Aprobar";
+        rechazarProveedor.textContent = isApproved === "True" ? "Ya Aprobado" : "Rechazar";
         if (isApproved === "True") {
             aprovarProveedor.disabled = true;
+            rechazarProveedor.disabled = true;
         }else{
             aprovarProveedor.disabled = false;
+            rechazarProveedor.disabled = false;
         }
 
 
@@ -310,6 +389,7 @@
 
     const deleteUserModal = new bootstrap.Modal(document.getElementById('deleteUserModal'));
     const confirmDeleteButton = document.getElementById('confirmDeleteButton');
+    
     let userIdToDelete;
     let nameToDelete;
 
@@ -324,6 +404,16 @@
 
     confirmDeleteButton.addEventListener('click', function () {
         Swal.fire({
+            title: 'Seguro que deseas eliminar?',
+            showCancelButton: true,
+            confirmButtonText: 'Eliminar',
+            cancelButtonText: 'Cancelar',
+            allowOutsideClick: false,
+            allowEscapeKey: false,
+            confirmButtonColor: '#d33',
+        }).then((result) => {
+            if (result.isConfirmed) {
+                   Swal.fire({
             title: 'Eliminando proveedor',
             allowOutsideClick: false,
             allowEscapeKey: false,
@@ -353,6 +443,10 @@
                 }
             })
             .catch(error => console.error('Error:', error)).finally(() => Swal.close());
+            }
+        })
+        
+    
     });
     document.querySelectorAll('[data-bs-toggle="modal"]').forEach(function (button) {
         button.addEventListener('click', function () {
@@ -390,6 +484,153 @@
                 } 
             })
             .catch(error =>  alert(data.message));
+    });
+</script>
+
+<script>
+    const confirmLeftButton = document.getElementById('confirmLeftButton');
+    confirmLeftButton.addEventListener('click', function () {
+    const leftReason = document.getElementById('leftReason').value;
+
+    if (!leftReason.trim()) {
+        Swal.fire({
+            title: 'Error',
+            text: 'Por favor, proporciona un motivo para pausar al proveedor.',
+            icon: 'warning'
+        });
+        return;
+    }
+
+    Swal.fire({
+        title: 'Pausando proveedor',
+        allowOutsideClick: false,
+        allowEscapeKey: false,
+        didOpen: () => {
+            Swal.showLoading();
+        }
+    });
+
+    fetch(`/Proveedores/PausarProveedor/${userIdToDelete}/${leftReason}`, {
+        method: 'POST',
+        headers: {
+            'Content-Type': 'application/json',
+        },
+    })
+        .then(response => {
+            if (!response.ok) {
+                return response.json().then(err => {
+                    throw new Error(err.message || 'Error al pausar el proveedor');
+                });
+            }
+            return response.json();
+        })
+        .then(data => {
+            Swal.fire({
+                title: 'Proveedor pausado',
+                text: 'Proveedor pausado con éxito',
+                icon: 'success',
+                didClose: () => {
+                    window.location.reload();
+                }
+            });
+        })
+        .catch(error => {
+            Swal.fire({
+                title: 'Error',
+                text: error.message || 'Error al pausar el proveedor',
+                icon: 'error'
+            });
+        })
+        .finally(() => {
+            Swal.close();
+        });
+});
+
+
+    const confirmRightButton = document.getElementById('confirmRightButton');
+    confirmRightButton.addEventListener('click', function () {
+        Swal.fire({
+            title: 'Reactivando proveedor',
+            allowOutsideClick: false,
+            allowEscapeKey: false,
+            didOpen: () => {
+                Swal.showLoading();
+                }
+            }) 
+        fetch(`/Proveedores/ReactivarProveedor/${userIdToDelete}/Usuario Reactivado`, {
+            method: 'POST',
+            headers: {
+                'Content-Type': 'application/json',
+            },
+            
+        }).then(response => {
+            if(!response.ok){
+               throw new Error('Error al reactivar el proveedor');
+            }
+            Swal.fire({
+                title: 'Proveedor reactivado',
+                text: 'Proveedor reactivado con éxito',
+                icon: 'success',
+                didClose: () => {
+                    window.location.reload();
+                }
+            }).catch(error => Swal.fire({
+                title: 'Error',
+                text: 'Error al reactivar el proveedor',
+                icon: 'error'
+               })).finally(() => Swal.close());
+        })
+    });
+
+    const confirmRejectButton = document.getElementById('confirmRejectButton');
+    confirmRejectButton.addEventListener('click', function () {
+            Swal.fire({
+                title: 'Estas seguro de rechazar a este proveedor?',
+                allowOutsideClick: false,
+                allowEscapeKey: false,
+                showCancelButton: true,
+                confirmButtonText: 'Rechazar',
+                cancelButtonText: 'Cancelar',
+                confirmButtonColor: '#d33',
+                cancelButtonColor: '#3085d6',
+            }).then((result) => {
+                if (result.isConfirmed) {
+                    Swal.fire({
+                        title: 'Rechazando proveedor',
+                        allowOutsideClick: false,
+                        allowEscapeKey: false,
+                        didOpen: () => {
+                            Swal.showLoading();
+                        }
+                    })
+                    fetch(`/Proveedores/RechazarProveedor/${idproveedor.value}/${rejectReason.value}`, {
+                        method: 'POST',
+                        headers: {
+                            'Content-Type': 'application/json',
+                        },
+                    })
+                    .then(response => {
+                        if(!response.ok){
+                            throw new Error('Error al rechazar el proveedor');
+                        }
+                         Swal.fire({
+                            title: 'Proveedor rechazado',
+                            text: 'Proveedor rechazado con éxito',
+                            icon: 'success',
+                            didClose: () => {
+                                window.location.reload();
+                            }
+                        })
+                    })
+                   
+                    .catch(error => Swal.fire({
+                        title: 'Error',
+                        text: 'Error al rechazar el proveedor',
+                        icon: 'error'
+                    })).finally(() => Swal.close());
+                }
+            })
+
     });
 </script>
 

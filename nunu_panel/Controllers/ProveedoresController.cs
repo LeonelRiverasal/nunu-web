@@ -111,6 +111,75 @@ namespace nunu_panel.Controllers
             }
         }
 
+        [HttpPost("/Proveedores/RechazarProveedor/{idProveedor}/{razonRechazo}")]
+        public async Task<IActionResult> RechazarProveedor(int idProveedor, string razonRechazo)
+        {
+            _logger.LogInformation($"Rechazar proveedor: {idProveedor} con motivo: {razonRechazo}");
+            var options = new RestClientOptions(apiBaseUrl) { MaxTimeout = -1 };
+
+            var client = new RestClient(options);
+            var request = new RestRequest($"/Proveedores/RechazarProveedor", Method.Post);
+            request.AddJsonBody(new { idProveedor, motivo = razonRechazo });
+            var response = await client.ExecuteAsync(request);
+
+            if (response.StatusCode == HttpStatusCode.OK)
+            {
+                return Ok(new { success = true, message = "Proveedor rechazado con éxito" });
+            }
+            else
+            {
+                return BadRequest(
+                    new { success = false, message = "Error al rechazar el proveedor" }
+                );
+            }
+        }
+
+        [HttpPost("/Proveedores/PausarProveedor/{idProveedor}/{motivo}")]
+        public IActionResult PausarProveedor(int idProveedor, string motivo)
+        {
+            _logger.LogInformation($"Pausar proveedor: {idProveedor} con motivo: {motivo}");
+            var options = new RestClientOptions(apiBaseUrl) { MaxTimeout = -1 };
+
+            var client = new RestClient(options);
+            var request = new RestRequest($"/Proveedores/SuspenderProvedor", Method.Post);
+            request.AddJsonBody(new { idProveedor, motivo });
+            var response = client.Execute(request);
+            if (response.StatusCode == HttpStatusCode.OK)
+            {
+                return Ok(new { success = true, message = "Proveedor pausado con éxito" });
+            }
+            else
+            {
+                return BadRequest(
+                    new { success = false, message = "Error al pausar el proveedor" }
+                );
+            }
+        }
+
+        [HttpPost("/Proveedores/ReactivarProveedor/{idProveedor}/{motivo}")]
+        public async Task<IActionResult> ReactivarProveedor(
+            int idProveedor,
+            string? motivo = "Usuario Reactivado"
+        )
+        {
+            var options = new RestClientOptions(apiBaseUrl) { MaxTimeout = -1 };
+
+            var client = new RestClient(options);
+            var request = new RestRequest($"/Proveedores/ActivarProvedor", Method.Post);
+            request.AddJsonBody(new { idProveedor, motivo });
+            var response = await client.ExecuteAsync(request);
+            if (response.StatusCode == HttpStatusCode.OK)
+            {
+                return Ok(new { success = true, message = "Proveedor reactivado con éxito" });
+            }
+            else
+            {
+                return BadRequest(
+                    new { success = false, message = "Error al reactivar el proveedor" }
+                );
+            }
+        }
+
         public List<ProveedorModel>? GetProveedores()
         {
             try
