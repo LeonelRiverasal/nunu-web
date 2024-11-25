@@ -482,8 +482,13 @@
                     $('#successModal').modal('show');
                     modalMessage.innerText = data.message;
                 } 
+                throw new Error(data.message);
             })
-            .catch(error =>  alert(data.message));
+            .catch(error =>  Swal.fire({
+                title: 'Error',
+                text: error.message,
+                icon: 'error'
+            }));
     });
 </script>
 

@@ -75,7 +75,7 @@ namespace nunu_panel.Controllers
                 var strapiINEResponse = client.Execute(strapiINE);
                 if (strapiINEResponse.StatusCode == HttpStatusCode.OK)
                 {
-                    return Json(
+                    return Ok(
                         new
                         {
                             success = true,
@@ -85,7 +85,7 @@ namespace nunu_panel.Controllers
                 }
                 else
                 {
-                    return Json(
+                    return BadRequest(
                         new
                         {
                             success = false,
