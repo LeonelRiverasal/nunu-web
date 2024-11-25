@@ -481,8 +481,10 @@
                     const modalMessage = document.getElementById('modalMessage');
                     $('#successModal').modal('show');
                     modalMessage.innerText = data.message;
-                } 
-                throw new Error(data.message);
+                }
+                else{
+                    throw new Error(data.message);
+                }
             })
             .catch(error =>  Swal.fire({
                 title: 'Error',
